@@ -12,7 +12,7 @@
                                                 d="M14.8 8a2 2 0 0 0 -1.8 -1h-2a2 2 0 1 0 0 4h2a2 2 0 1 1 0 4h-2a2 2 0 0 1 -1.8 -1">
                                             </path>
                                             <path d="M12 6v10"></path>
-                                        </svg>', 'svg_bg' => 'tw-bg-green-100' , 'svg_text' => 'tw-text-green-500'
+                                        </svg>', 'svg_bg' => 'tw-bg-sky-100' , 'svg_text' => 'tw-text-sky-500'
 ])
     <p class="tw-text-sm tw-font-medium tw-text-gray-500 tw-truncate tw-whitespace-nowrap">
         {{ $dashboard_detail->heading }} @show_tooltip(__('lang_v1.net_home_tooltip'))

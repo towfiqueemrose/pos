@@ -79,11 +79,11 @@
     </style>
     <style>
         body {
-            background: linear-gradient(to right, #186539, #186539);
+            background: #f0f4f8;
         }
 
         h1 {
-            color: #fff;
+            color: #1e293b;
         }
     </style>
     <style>
@@ -102,4 +102,6 @@
         }
     </style>
 
-<link href="{{ asset('css/tailwind/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/tailwind/app.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('css/custom-theme.css?v='.$asset_v) }}" rel="stylesheet">

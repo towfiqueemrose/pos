@@ -138,12 +138,14 @@ class Media extends Model
      */
     public static function uploadFile($file)
     {
+        if ($file->getSize() > config('constants.document_size_limit')) {
+            throw new \Exception('File size exceeds the maximum allowed size of '.(config('constants.document_size_limit') / 1000000).'MB');
+        }
+
         $file_name = null;
-        if ($file->getSize() <= config('constants.document_size_limit')) {
-            $new_file_name = time().'_'.mt_rand().'_'.$file->getClientOriginalName();
-            if ($file->storeAs('/media', $new_file_name)) {
-                $file_name = $new_file_name;
-            }
+        $new_file_name = time().'_'.mt_rand().'_'.$file->getClientOriginalName();
+        if ($file->storeAs('/media', $new_file_name)) {
+            $file_name = $new_file_name;
         }
 
         return $file_name;

@@ -26,3 +26,8 @@ npm-debug.log
 /public/docs
 /public/js/skins/
 /public/js/icons/
+# Unnecessary files
+.kiro/
+.playwright-mcp/
+docs/
+test-brochure.jpg
