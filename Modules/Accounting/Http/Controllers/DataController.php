@@ -16,18 +16,18 @@ class DataController extends Controller
     public function user_permissions()
     {
         return array(
-            array('value' => 'accounting.chart_of_accounts.index', 'label' => 'View Chart of accounts'),
-            array('value' => 'accounting.chart_of_accounts.create', 'label' => 'Create Chart of accounts'),
-            array('value' => 'accounting.chart_of_accounts.edit', 'label' => 'Edit Chart of accounts'),
-            array('value' => 'accounting.chart_of_accounts.destroy', 'label' => 'Delete Chart of accounts'),
-            array('value' => 'accounting.journal_entries.index', 'label' => 'View Journal Entries'),
-            array('value' => 'accounting.journal_entries.create', 'label' => 'Create Journal Entries'),
-            array('value' => 'accounting.journal_entries.edit', 'label' => 'Edit Journal Entries'),
-            array('value' => 'accounting.journal_entries.reverse', 'label' => 'Reverse Journal Entries'),
-            array('value' => 'accounting.reports.balance_sheet', 'label' => 'View Balance Sheet'),
-            array('value' => 'accounting.reports.trial_balance', 'label' => 'View Trial Balance'),
-            array('value' => 'accounting.reports.income_statement', 'label' => 'View Income Statement'),
-            array('value' => 'accounting.reports.ledger', 'label' => 'View Ledger')
+            array('value' => 'accounting.chart_of_accounts.index', 'label' => 'View Chart of accounts', 'default' => false),
+            array('value' => 'accounting.chart_of_accounts.create', 'label' => 'Create Chart of accounts', 'default' => false),
+            array('value' => 'accounting.chart_of_accounts.edit', 'label' => 'Edit Chart of accounts', 'default' => false),
+            array('value' => 'accounting.chart_of_accounts.destroy', 'label' => 'Delete Chart of accounts', 'default' => false),
+            array('value' => 'accounting.journal_entries.index', 'label' => 'View Journal Entries', 'default' => false),
+            array('value' => 'accounting.journal_entries.create', 'label' => 'Create Journal Entries', 'default' => false),
+            array('value' => 'accounting.journal_entries.edit', 'label' => 'Edit Journal Entries', 'default' => false),
+            array('value' => 'accounting.journal_entries.reverse', 'label' => 'Reverse Journal Entries', 'default' => false),
+            array('value' => 'accounting.reports.balance_sheet', 'label' => 'View Balance Sheet', 'default' => false),
+            array('value' => 'accounting.reports.trial_balance', 'label' => 'View Trial Balance', 'default' => false),
+            array('value' => 'accounting.reports.income_statement', 'label' => 'View Income Statement', 'default' => false),
+            array('value' => 'accounting.reports.ledger', 'label' => 'View Ledger', 'default' => false)
         );
     }
 

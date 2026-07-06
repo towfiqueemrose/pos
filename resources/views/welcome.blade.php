@@ -29,195 +29,118 @@
     @endphp
     <div class="row">
         <div class="col-md-4">
-        @if (config('app.env') == 'demo')
-        
+            @if (config('app.env') == 'demo')
                 @component('components.widget', [
-                    'class' => 'box-primary',
-                    'header' =>
-                        '<h4 class="text-center">Demo Shops <small><i> <br/>Demos are for example purpose only, this application <u>can be used in many other similar businesses.</u></i> <br/><b>Click button to login that business</b></small></h4>',
+                    'class' => 'box-primary pos-card',
+                    'header' => '<h4 class="text-center" style="font-size: 15px;">Demo Shops <br><small style="font-size:12px; font-weight:normal; color:#64748b;">Click button to login</small></h4>',
                 ])
-                    <a href="?demo_type=all_in_one" class="btn btn-app bg-olive demo-login" data-toggle="tooltip"
-                        title="Showcases all feature available in the application."
-                        data-admin="{{ $demo_types['all_in_one'] }}"> <i class="fas fa-star"></i> All In One</a>
-
-                    <a href="?demo_type=pharmacy" class="btn bg-maroon btn-app demo-login" data-toggle="tooltip"
-                        title="Shops with products having expiry dates." data-admin="{{ $demo_types['pharmacy'] }}"><i
-                            class="fas fa-medkit"></i>Pharmacy</a>
-
-                    <a href="?demo_type=services" class="btn bg-orange btn-app demo-login" data-toggle="tooltip"
-                        title="For all service providers like Web Development, Restaurants, Repairing, Plumber, Salons, Beauty Parlors etc."
-                        data-admin="{{ $demo_types['services'] }}"><i class="fas fa-wrench"></i>Multi-Service Center</a>
-
-                    <a href="?demo_type=electronics" class="btn bg-purple btn-app demo-login" data-toggle="tooltip"
-                        title="Products having IMEI or Serial number code." data-admin="{{ $demo_types['electronics'] }}"><i
-                            class="fas fa-laptop"></i>Electronics & Mobile Shop</a>
-
-                    <a href="?demo_type=super_market" class="btn bg-navy btn-app demo-login" data-toggle="tooltip"
-                        title="Super market & Similar kind of shops." data-admin="{{ $demo_types['super_market'] }}"><i
-                            class="fas fa-shopping-cart"></i> Super Market</a>
-
-                    <a href="?demo_type=restaurant" class="btn bg-red btn-app demo-login" data-toggle="tooltip"
-                        title="Restaurants, Salons and other similar kind of shops."
-                        data-admin="{{ $demo_types['restaurant'] }}"><i class="fas fa-utensils"></i> Restaurant</a>
-                    <hr>
-
-                    <i class="icon fas fa-plug"></i> Premium optional modules:<br><br>
-
-                    <a href="?demo_type=superadmin" class="btn bg-red-active btn-app demo-login" data-toggle="tooltip"
-                        title="SaaS & Superadmin extension Demo" data-admin="{{ $demo_types['superadmin'] }}"><i
-                            class="fas fa-university"></i> SaaS / Superadmin</a>
-
-                    <a href="?demo_type=woocommerce" class="btn bg-woocommerce btn-app demo-login" data-toggle="tooltip"
-                        title="WooCommerce demo user - Open web shop in minutes!!" style="color:white !important"
-                        data-admin="{{ $demo_types['woocommerce'] }}"> <i class="fab fa-wordpress"></i> WooCommerce</a>
-
-                    <a href="?demo_type=essentials" class="btn bg-navy btn-app demo-login" data-toggle="tooltip"
-                        title="Essentials & HRM (human resource management) Module Demo" style="color:white !important"
-                        data-admin="{{ $demo_types['essentials'] }}">
-                        <i class="fas fa-check-circle"></i>
-                        Essentials & HRM</a>
-
-                    <a href="?demo_type=manufacturing" class="btn bg-orange btn-app demo-login" data-toggle="tooltip"
-                        title="Manufacturing module demo" style="color:white !important"
-                        data-admin="{{ $demo_types['manufacturing'] }}">
-                        <i class="fas fa-industry"></i>
-                        Manufacturing Module</a>
-
-                    <a href="?demo_type=superadmin" class="btn bg-maroon btn-app demo-login" data-toggle="tooltip"
-                        title="Project module demo" style="color:white !important"
-                        data-admin="{{ $demo_types['superadmin'] }}">
-                        <i class="fas fa-project-diagram"></i>
-                        Project Module</a>
-
-                    <a href="?demo_type=services" class="btn btn-app demo-login" data-toggle="tooltip"
-                        title="Advance repair module demo" style="color:white !important; background-color: #bc8f8f"
-                        data-admin="{{ $demo_types['services'] }}">
-                        <i class="fas fa-wrench"></i>
-                        Advance Repair Module</a>
-
-                    <a href="{{ url('docs') }}" target="_blank" class="btn btn-app" data-toggle="tooltip"
-                        title="Advance repair module demo" style="color:white !important; background-color: #2dce89">
-                        <i class="fas fa-network-wired"></i>
-                        Connector Module / API Documentation</a>
+                    <div style="display:flex; flex-direction:column; gap:8px;">
+                        <a href="?demo_type=all_in_one" class="btn btn-pos-secondary demo-login" data-admin="{{ $demo_types['all_in_one'] }}" style="width:100%; text-align:left;"> <i class="fas fa-star" style="width:20px;"></i> All In One</a>
+                        <a href="?demo_type=pharmacy" class="btn btn-pos-secondary demo-login" data-admin="{{ $demo_types['pharmacy'] }}" style="width:100%; text-align:left;"><i class="fas fa-medkit" style="width:20px;"></i> Pharmacy</a>
+                        <a href="?demo_type=services" class="btn btn-pos-secondary demo-login" data-admin="{{ $demo_types['services'] }}" style="width:100%; text-align:left;"><i class="fas fa-wrench" style="width:20px;"></i> Services</a>
+                        <a href="?demo_type=electronics" class="btn btn-pos-secondary demo-login" data-admin="{{ $demo_types['electronics'] }}" style="width:100%; text-align:left;"><i class="fas fa-laptop" style="width:20px;"></i> Electronics</a>
+                        <a href="?demo_type=super_market" class="btn btn-pos-secondary demo-login" data-admin="{{ $demo_types['super_market'] }}" style="width:100%; text-align:left;"><i class="fas fa-shopping-cart" style="width:20px;"></i> Super Market</a>
+                        <a href="?demo_type=restaurant" class="btn btn-pos-secondary demo-login" data-admin="{{ $demo_types['restaurant'] }}" style="width:100%; text-align:left;"><i class="fas fa-utensils" style="width:20px;"></i> Restaurant</a>
+                    </div>
                 @endcomponent
-            
-            
-        
-    @endif
+            @endif
         </div>
         <div class="col-md-4">
-            <div
-                class="tw-p-5 md:tw-p-6 tw-mb-4 tw-rounded-2xl tw-transition-all tw-duration-200 tw-bg-white tw-shadow-sm tw-ring-1 tw-ring-gray-200">
-                <div class="tw-flex tw-flex-col tw-gap-4 tw-dw-rounded-box tw-dw-p-6 tw-dw-max-w-md">
-                    <div class="tw-flex tw-items-center tw-flex-col">
-                        <h1 class="tw-text-lg md:tw-text-xl tw-font-semibold tw-text-[#1e1e1e]">
-                            @lang('lang_v1.welcome_back')
-                        </h1>
-                        <h2 class="tw-text-sm tw-font-medium tw-text-gray-500">
-                            @lang('lang_v1.login_to_your') {{ config('app.name', 'ultimatePOS') }}
-                        </h2>
+            <div class="pos-auth-card" style="margin: 0 auto;">
+                
+                <h1 class="pos-auth-title">
+                    @lang('lang_v1.welcome_back')
+                </h1>
+                <h2 class="pos-auth-subtitle">
+                    @lang('lang_v1.login_to_your') {{ config('app.name', 'ultimatePOS') }}
+                </h2>
+
+                <form method="POST" action="{{ route('login') }}" id="login-form">
+                    {{ csrf_field() }}
+                    <div class="form-group has-feedback {{ $errors->has('username') ? ' has-error' : '' }}">
+                        <label class="pos-auth-label" for="username">@lang('Username')</label>
+                        <input
+                            class="pos-auth-input"
+                            name="username" required autofocus placeholder="@lang('lang_v1.username')"
+                            id="username" type="text"
+                            value="{{ $username }}" />
+                        @if ($errors->has('username'))
+                            <span class="help-block" style="color: #EF4444; font-size: 12px; margin-top: 4px;">
+                                <strong>{{ $errors->first('username') }}</strong>
+                            </span>
+                        @endif
                     </div>
 
-                    <form method="POST" action="{{ route('login') }}" id="login-form">
-                        {{ csrf_field() }}
-                        <div class="form-group has-feedback {{ $errors->has('username') ? ' has-error' : '' }}">
-                            <label class="tw-dw-form-control">
-                                <div class="tw-dw-label">
-                                    <span
-                                        class="tw-text-xs md:tw-text-sm tw-font-medium tw-text-black">@lang('Username')</span>
-                                </div>
-
-                                <input
-                                    class="tw-border tw-border-[#D1D5DA] tw-outline-none tw-h-12 tw-bg-transparent tw-rounded-lg tw-px-3 tw-font-medium tw-text-black placeholder:tw-text-gray-500 placeholder:tw-font-medium"
-                                    name="username" required autofocus placeholder="@lang('lang_v1.username')"
-                                    data-last-active-input="" id="username" type="text" name="username"
-                                    value="{{ $username }}" />
-                                @if ($errors->has('username'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('username') }}</strong>
-                                    </span>
-                                @endif
-                            </label>
-                        </div>
-
-                        <div class="form-group has-feedback {{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label class="tw-dw-form-control">
-                                <div class="tw-dw-label">
-                                    <span
-                                        class="tw-text-xs md:tw-text-sm tw-font-medium tw-text-black">@lang('Password')</span>
-                                    @if (config('app.env') != 'demo')
-                                        <a href="{{ route('password.request') }}"
-                                            class="tw-text-xs md:tw-text-sm tw-font-medium tw-bg-gradient-to-r tw-from-indigo-500 tw-to-blue-500 tw-inline-block tw-text-transparent tw-bg-clip-text hover:tw-text-[#467BF5]"
-                                            tabindex="-1">@lang('lang_v1.forgot_your_password')</a>
-                                    @endif
-                                </div>
-
-                                <input
-                                    class="tw-border tw-border-[#D1D5DA] tw-outline-none tw-h-12 tw-bg-transparent tw-rounded-lg tw-px-3 tw-font-medium tw-text-black placeholder:tw-text-gray-500 placeholder:tw-font-medium"
-                                    id="password" type="password" name="password" value="{{ $password }}" required
-                                    placeholder="@lang('lang_v1.password')" />
-                                <button type="button" id="show_hide_icon" class="show_hide_icon"
-                                    style="position: absolute; top:48px;right:5px;">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye tw-w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                        <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-                                        <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" />
-                                    </svg>
-                                </button>
-                            </label>
-                            @if ($errors->has('password'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('password') }}</strong>
-                                </span>
+                    <div class="form-group has-feedback {{ $errors->has('password') ? ' has-error' : '' }}" style="position: relative;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <label class="pos-auth-label" for="password">@lang('Password')</label>
+                            @if (config('app.env') != 'demo')
+                                <a href="{{ route('password.request') }}"
+                                    style="font-size: 13px; font-weight: 500; color: #4F46E5; text-decoration: none; margin-bottom: 6px;"
+                                    tabindex="-1">@lang('lang_v1.forgot_your_password')</a>
                             @endif
                         </div>
 
-
-                        <div class="tw-dw-form-control">
-                            <label class="tw-dw-cursor-pointer tw-dw-label tw-self-start tw-gap-2">
-                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}
-                                    class="tw-dw-checkbox">
-                                <span
-                                    class="tw-text-xs md:tw-text-sm tw-font-medium tw-text-black tw-mt-[0.2rem]">@lang('lang_v1.remember_me')</span>
-                            </label>
-                        </div>
-                        @if(config('constants.enable_recaptcha'))
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <div class="g-recaptcha" data-sitekey="{{ config('constants.google_recaptcha_key') }}"></div>
-                                        @if ($errors->has('g-recaptcha-response'))
-                                            <span class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
-                                        @endif
-                                </div>  
-                            </div>
-                        </div>
-                        @endif
-                        <button type="submit"
-                            class="tw-bg-gradient-to-r tw-from-indigo-500 tw-to-blue-500 tw-h-12 tw-rounded-xl tw-text-sm md:tw-text-base tw-text-white tw-font-semibold tw-w-full tw-max-w-full mt-2 hover:tw-from-indigo-600 hover:tw-to-blue-600 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-blue-500 focus:tw-ring-offset-2 active:tw-from-indigo-700 active:tw-to-blue-700">
-                            @lang('lang_v1.login')
+                        <input
+                            class="pos-auth-input"
+                            id="password" type="password" name="password" value="{{ $password }}" required
+                            placeholder="@lang('lang_v1.password')" />
+                        <button type="button" id="show_hide_icon" class="show_hide_icon"
+                            style="position: absolute; top:36px; right:10px; background: none; border: none; padding: 0;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye tw-w-5" viewBox="0 0 24 24" stroke-width="1.5" stroke="#94A3B8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                                <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" />
+                            </svg>
                         </button>
-                    </form>
-
-                    <div class="tw-flex tw-items-center tw-flex-col">
-                        <!-- Register Url -->
-
-                        @if (!($request->segment(1) == 'business' && $request->segment(2) == 'register'))
-                            <!-- Register Url -->
-                            @if (config('constants.allow_registration'))
-                                <a href="{{ route('business.getRegister') }}@if (!empty(request()->lang)) {{ '?lang=' . request()->lang }} @endif"
-                                    class="tw-text-sm tw-font-medium tw-text-gray-500 hover:tw-text-gray-500 tw-mt-2">{{ __('business.not_yet_registered') }}
-                                    <span
-                                        class="tw-text-sm tw-font-medium tw-bg-gradient-to-r tw-from-indigo-500 tw-to-blue-500 tw-inline-block tw-text-transparent tw-bg-clip-text hover:tw-text-[#467BF5] hover:tw-underline">{{ __('business.register_now') }}</span></a>
-                            @endif
+                        @if ($errors->has('password'))
+                            <span class="help-block" style="color: #EF4444; font-size: 12px; margin-top: 4px;">
+                                <strong>{{ $errors->first('password') }}</strong>
+                            </span>
                         @endif
                     </div>
+
+                    <div style="margin-top: 12px; margin-bottom: 24px;">
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}
+                                style="width: 16px; height: 16px; border-radius: 4px; border: 1px solid #CBD5E1;">
+                            <span style="font-size: 13px; font-weight: 500; color: #334155;">@lang('lang_v1.remember_me')</span>
+                        </label>
+                    </div>
+                    
+                    @if(config('constants.enable_recaptcha'))
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="g-recaptcha" data-sitekey="{{ config('constants.google_recaptcha_key') }}"></div>
+                                    @if ($errors->has('g-recaptcha-response'))
+                                        <span class="text-danger" style="color: #EF4444; font-size: 12px; margin-top: 4px;">{{ $errors->first('g-recaptcha-response') }}</span>
+                                    @endif
+                            </div>  
+                        </div>
+                    </div>
+                    @endif
+                    
+                    <button type="submit" class="pos-auth-btn">
+                        @lang('lang_v1.login')
+                    </button>
+                </form>
+
+                <div style="text-align: center; margin-top: 24px;">
+                    @if (!($request->segment(1) == 'business' && $request->segment(2) == 'register'))
+                        @if (config('constants.allow_registration'))
+                            <span style="font-size: 13px; color: #64748B;">{{ __('business.not_yet_registered') }}</span>
+                            <a href="{{ route('business.getRegister') }}@if (!empty(request()->lang)) {{ '?lang=' . request()->lang }} @endif"
+                                style="font-size: 13px; font-weight: 600; color: #4F46E5; text-decoration: none; margin-left: 4px;">
+                                {{ __('business.register_now') }}
+                            </a>
+                        @endif
+                    @endif
                 </div>
             </div>
         </div>
         <div class="col-md-4"></div>
     </div>
-
 @stop
 @section('javascript')
     <script type="text/javascript">
@@ -239,11 +162,11 @@
 
             if (passwordInput.attr('type') === 'password') {
                 passwordInput.attr('type', 'text');
-                $('#show_hide_icon').html('<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye-off tw-w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10.585 10.587a2 2 0 0 0 2.829 2.828"/><path d="M16.681 16.673a8.717 8.717 0 0 1 -4.681 1.327c-3.6 0 -6.6 -2 -9 -6c1.272 -2.12 2.712 -3.678 4.32 -4.674m2.86 -1.146a9.055 9.055 0 0 1 1.82 -.18c3.6 0 6.6 2 9 6c-.666 1.11 -1.379 2.067 -2.138 2.87"/><path d="M3 3l18 18"/></svg>');
+                $('#show_hide_icon').html('<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye-off tw-w-5" viewBox="0 0 24 24" stroke-width="1.5" stroke="#94A3B8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10.585 10.587a2 2 0 0 0 2.829 2.828"/><path d="M16.681 16.673a8.717 8.717 0 0 1 -4.681 1.327c-3.6 0 -6.6 -2 -9 -6c1.272 -2.12 2.712 -3.678 4.32 -4.674m2.86 -1.146a9.055 9.055 0 0 1 1.82 -.18c3.6 0 6.6 2 9 6c-.666 1.11 -1.379 2.067 -2.138 2.87"/><path d="M3 3l18 18"/></svg>');
             }
             else if (passwordInput.attr('type') === 'text') {
                 passwordInput.attr('type', 'password');
-                $('#show_hide_icon').html('<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye tw-w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6"/></svg>');
+                $('#show_hide_icon').html('<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye tw-w-5" viewBox="0 0 24 24" stroke-width="1.5" stroke="#94A3B8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6"/></svg>');
             }
         });
         })
