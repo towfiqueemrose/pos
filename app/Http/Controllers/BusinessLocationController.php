@@ -7,6 +7,8 @@ use App\BusinessLocation;
 use App\InvoiceLayout;
 use App\InvoiceScheme;
 use App\SellingPriceGroup;
+use App\Http\Requests\StoreBusinessLocationRequest;
+use App\Http\Requests\UpdateBusinessLocationRequest;
 use App\Utils\ModuleUtil;
 use App\Utils\Util;
 use Illuminate\Http\Request;
@@ -149,7 +151,7 @@ class BusinessLocationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBusinessLocationRequest $request)
     {
         if (! auth()->user()->can('business_settings.access')) {
             abort(403, 'Unauthorized action.');
@@ -184,18 +186,14 @@ class BusinessLocationController extends Controller
             //Create a new permission related to the created location
             Permission::create(['name' => 'location.'.$location->id]);
 
-            $output = ['success' => true,
-                'msg' => __('business.business_location_added_success'),
-            ];
+            return redirect('/business-location')
+                ->with('success', __('business.business_location_added_success'));
         } catch (\Exception $e) {
             \Log::emergency('File:'.$e->getFile().'Line:'.$e->getLine().'Message:'.$e->getMessage());
 
-            $output = ['success' => false,
-                'msg' => __('messages.something_went_wrong'),
-            ];
+            return redirect()->back()
+                ->with('error', __('messages.something_went_wrong'));
         }
-
-        return $output;
     }
 
     /**
@@ -261,7 +259,7 @@ class BusinessLocationController extends Controller
      * @param  \App\StoreFront  $storeFront
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateBusinessLocationRequest $request, $id)
     {
         if (! auth()->user()->can('business_settings.access')) {
             abort(403, 'Unauthorized action.');

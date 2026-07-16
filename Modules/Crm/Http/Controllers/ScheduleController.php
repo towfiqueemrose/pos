@@ -12,6 +12,8 @@ use App\Utils\Util;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
+use Modules\Crm\Http\Requests\StoreScheduleRequest;
+use Modules\Crm\Http\Requests\UpdateScheduleRequest;
 use Illuminate\Support\Facades\View;
 use Modules\Crm\Entities\CrmContact;
 use Modules\Crm\Entities\Schedule;
@@ -364,7 +366,7 @@ class ScheduleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreScheduleRequest $request)
     {
         $business_id = request()->session()->get('user.business_id');
         if (!(auth()->user()->can('superadmin') || $this->moduleUtil->hasThePermissionInSubscription($business_id, 'crm_module'))) {
@@ -501,7 +503,7 @@ class ScheduleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateScheduleRequest $request, $id)
     {
         $business_id = request()->session()->get('user.business_id');
         $can_access_all_schedule = auth()->user()->can('crm.access_all_schedule');

@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Repair\Entities\RepairStatus;
+use Modules\Repair\Http\Requests\StoreRepairSettingsRequest;
 use Modules\Repair\Utils\RepairUtil;
 
 class RepairSettingsController extends Controller
@@ -85,7 +86,7 @@ class RepairSettingsController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreRepairSettingsRequest $request)
     {
         $business_id = request()->session()->get('user.business_id');
 

@@ -2,9 +2,10 @@
 
 namespace Modules\Repair\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Repair\Http\Requests\StoreRepairDashboardRequest;
+use Modules\Repair\Http\Requests\UpdateRepairDashboardRequest;
 use Modules\Repair\Utils\RepairUtil;
 
 class DashboardController extends Controller
@@ -58,7 +59,7 @@ class DashboardController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreRepairDashboardRequest $request)
     {
         //
     }
@@ -92,7 +93,7 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRepairDashboardRequest $request, $id)
     {
         //
     }

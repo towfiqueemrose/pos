@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\DocumentAndNote;
 use App\Media;
 use App\User;
+use App\Http\Requests\StoreDocumentNoteRequest;
 use App\Utils\ModuleUtil;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -206,7 +207,7 @@ class DocumentAndNoteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreDocumentNoteRequest $request)
     {
         try {
 

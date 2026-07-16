@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUnitRequest;
+use App\Http\Requests\UpdateUnitRequest;
 use App\Product;
 use App\Unit;
 use App\Utils\Util;
-use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
 class UnitController extends Controller
@@ -108,7 +109,7 @@ class UnitController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUnitRequest $request)
     {
         if (! auth()->user()->can('unit.create')) {
             abort(403, 'Unauthorized action.');
@@ -186,7 +187,7 @@ class UnitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUnitRequest $request, $id)
     {
         if (! auth()->user()->can('unit.update')) {
             abort(403, 'Unauthorized action.');

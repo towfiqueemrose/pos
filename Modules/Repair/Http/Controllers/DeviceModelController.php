@@ -12,6 +12,8 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\View;
 use Modules\Repair\Entities\DeviceModel;
 use Modules\Repair\Entities\JobSheet;
+use Modules\Repair\Http\Requests\StoreDeviceModelRequest;
+use Modules\Repair\Http\Requests\UpdateDeviceModelRequest;
 use Modules\Repair\Utils\RepairUtil;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -137,7 +139,7 @@ class DeviceModelController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreDeviceModelRequest $request)
     {
         $business_id = request()->session()->get('user.business_id');
 
@@ -211,7 +213,7 @@ class DeviceModelController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateDeviceModelRequest $request, $id)
     {
         $business_id = request()->session()->get('user.business_id');
 

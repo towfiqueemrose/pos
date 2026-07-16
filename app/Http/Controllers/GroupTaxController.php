@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreGroupTaxRequest;
+use App\Http\Requests\UpdateGroupTaxRequest;
 use App\TaxRate;
 use Datatables;
-use Illuminate\Http\Request;
 
 class GroupTaxController extends Controller
 {
@@ -64,7 +65,7 @@ class GroupTaxController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreGroupTaxRequest $request)
     {
         try {
             $input['name'] = $request->input('name');
@@ -139,7 +140,7 @@ class GroupTaxController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateGroupTaxRequest $request, $id)
     {
         if (request()->ajax()) {
             try {

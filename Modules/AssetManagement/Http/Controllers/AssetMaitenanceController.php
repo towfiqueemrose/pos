@@ -6,8 +6,9 @@ use App\Media;
 use App\User;
 use App\Utils\ModuleUtil;
 use App\Utils\Util;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\AssetManagement\Http\Requests\StoreAssetMaintenanceRequest;
+use Modules\AssetManagement\Http\Requests\UpdateAssetMaintenanceRequest;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Modules\AssetManagement\Entities\Asset;
@@ -225,7 +226,7 @@ class AssetMaitenanceController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreAssetMaintenanceRequest $request)
     {
         $business_id = request()->session()->get('user.business_id');
         if (! ((auth()->user()->can('asset.view_all_maintenance') && auth()->user()->can('asset.view_own_maintenance')) || ($this->moduleUtil->hasThePermissionInSubscription($business_id, 'assetmanagement_module')))) {
@@ -327,7 +328,7 @@ class AssetMaitenanceController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateAssetMaintenanceRequest $request, $id)
     {
         $business_id = request()->session()->get('user.business_id');
         if (! ((auth()->user()->can('asset.view_all_maintenance') && auth()->user()->can('asset.view_own_maintenance')) || ($this->moduleUtil->hasThePermissionInSubscription($business_id, 'assetmanagement_module')))) {

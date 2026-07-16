@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Utils\ContactUtil;
 use App\Utils\ModuleUtil;
 use Illuminate\Http\Request;
+use Modules\Crm\Http\Requests\StoreDashboardRequest;
+use Modules\Crm\Http\Requests\UpdateDashboardRequest;
 
 class DashboardController extends Controller
 {
@@ -61,7 +63,7 @@ class DashboardController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreDashboardRequest $request)
     {
         //
     }
@@ -95,7 +97,7 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateDashboardRequest $request, $id)
     {
         //
     }

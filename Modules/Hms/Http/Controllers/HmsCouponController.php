@@ -10,6 +10,8 @@ use Modules\Hms\Entities\HmsCoupon;
 use App\Utils\Util;
 use Yajra\DataTables\Facades\DataTables;
 use App\Utils\ModuleUtil;
+use Modules\Hms\Http\Requests\StoreHmsCouponRequest;
+use Modules\Hms\Http\Requests\UpdateHmsCouponRequest;
 
 
 class HmsCouponController extends Controller
@@ -95,7 +97,7 @@ class HmsCouponController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(StoreHmsCouponRequest $request)
     {
         $business_id = request()->session()->get('user.business_id');
         
@@ -180,7 +182,7 @@ class HmsCouponController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(UpdateHmsCouponRequest $request, $id)
     {
         $business_id = request()->session()->get('user.business_id');
         

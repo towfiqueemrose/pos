@@ -10,6 +10,8 @@ use Illuminate\Routing\Controller;
 use Modules\Accounting\Entities\AccountingAccount;
 use Modules\Accounting\Entities\AccountingAccountsTransaction;
 use Modules\Accounting\Entities\AccountingAccountType;
+use Modules\Accounting\Http\Requests\StoreCoaRequest;
+use Modules\Accounting\Http\Requests\UpdateCoaRequest;
 use Modules\Accounting\Utils\AccountingUtil;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Str;
@@ -1200,7 +1202,7 @@ class CoaController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreCoaRequest $request)
     {
         $business_id = $request->session()->get('user.business_id');
         if (! (auth()->user()->can('superadmin') ||
@@ -1316,7 +1318,7 @@ class CoaController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCoaRequest $request, $id)
     {
         $business_id = $request->session()->get('user.business_id');
         if (! (auth()->user()->can('superadmin') ||

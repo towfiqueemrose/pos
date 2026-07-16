@@ -11,9 +11,10 @@ use App\Utils\ProductUtil;
 use App\Utils\TransactionUtil;
 use App\Variation;
 use DB;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Manufacturing\Http\Requests\StoreProductionRequest;
+use Modules\Manufacturing\Http\Requests\UpdateProductionRequest;
 use Modules\Manufacturing\Entities\MfgIngredientGroup;
 use Modules\Manufacturing\Entities\MfgRecipe;
 use Modules\Manufacturing\Utils\ManufacturingUtil;
@@ -173,7 +174,7 @@ class ProductionController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreProductionRequest $request)
     {
         $business_id = $request->session()->get('user.business_id');
         if (! (auth()->user()->can('superadmin') || $this->moduleUtil->hasThePermissionInSubscription($business_id, 'manufacturing_module')) || ! auth()->user()->can('manufacturing.access_production')) {
@@ -635,7 +636,7 @@ class ProductionController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateProductionRequest $request, $id)
     {
         $business_id = $request->session()->get('user.business_id');
         if (! (auth()->user()->can('superadmin') || $this->moduleUtil->hasThePermissionInSubscription($business_id, 'manufacturing_module')) || ! auth()->user()->can('manufacturing.access_production')) {

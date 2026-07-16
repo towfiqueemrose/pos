@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreNotificationTemplateRequest;
 use App\NotificationTemplate;
 use App\Utils\ModuleUtil;
-use Illuminate\Http\Request;
 
 class NotificationTemplateController extends Controller
 {
@@ -94,7 +94,7 @@ class NotificationTemplateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreNotificationTemplateRequest $request)
     {
         if (! auth()->user()->can('send_notification')) {
             abort(403, 'Unauthorized action.');

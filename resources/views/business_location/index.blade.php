@@ -16,6 +16,18 @@
 
 <!-- Main content -->
 <section class="content">
+    @if(session('success'))
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ session('success') }}
+        </div>
+    @endif
+    @if(session('error'))
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ session('error') }}
+        </div>
+    @endif
     @component('components.widget', ['class' => 'box-primary', 'title' => __( 'business.all_your_business_locations' )])
         @slot('tool')
             <div class="box-tools">

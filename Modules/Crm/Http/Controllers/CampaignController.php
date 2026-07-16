@@ -9,6 +9,8 @@ use App\Utils\NotificationUtil;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
+use Modules\Crm\Http\Requests\StoreCampaignRequest;
+use Modules\Crm\Http\Requests\UpdateCampaignRequest;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Crm\Entities\Campaign;
@@ -163,7 +165,7 @@ class CampaignController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreCampaignRequest $request)
     {
         $business_id = request()->session()->get('user.business_id');
         if (! (auth()->user()->can('superadmin') || $this->moduleUtil->hasThePermissionInSubscription($business_id, 'crm_module'))) {
@@ -296,7 +298,7 @@ class CampaignController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCampaignRequest $request, $id)
     {
         $business_id = request()->session()->get('user.business_id');
         $can_access_all_campaigns = auth()->user()->can('crm.access_all_campaigns');

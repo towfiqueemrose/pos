@@ -3,7 +3,6 @@
 namespace Modules\Hms\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\Transaction;
 use Illuminate\Support\Carbon;
@@ -13,6 +12,8 @@ use Modules\Hms\Entities\HmsBookingLine;
 use App\Charts\CommonChart;
 use App\Utils\ModuleUtil;
 use Modules\Hms\Entities\HmsTransactionClass;
+use Modules\Hms\Http\Requests\StoreHmsRequest;
+use Modules\Hms\Http\Requests\UpdateHmsRequest;
 
 
 class HmsController extends Controller
@@ -170,7 +171,7 @@ class HmsController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(StoreHmsRequest $request)
     {
         //
     }
@@ -201,7 +202,7 @@ class HmsController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(UpdateHmsRequest $request, $id)
     {
         //
     }

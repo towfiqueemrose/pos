@@ -18,7 +18,7 @@ class ProjectTaskComment extends Model
      *
      * @var array
      */
-    protected $guarded = ['id'];
+    protected $guarded = ['id', 'created_at', 'updated_at', 'deleted_at', 'created_by'];
 
     public function media()
     {

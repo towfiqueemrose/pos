@@ -30,6 +30,8 @@ use App\Utils\ProductUtil;
 use App\Utils\BusinessUtil;
 use App\Account;
 use Modules\Hms\Entities\HmsTransactionClass;
+use Modules\Hms\Http\Requests\StoreHmsBookingRequest;
+use Modules\Hms\Http\Requests\UpdateHmsBookingRequest;
 
 
 class HmsBookingController extends Controller
@@ -258,7 +260,7 @@ class HmsBookingController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(StoreHmsBookingRequest $request)
     {
  
         // return $request;
@@ -542,7 +544,7 @@ class HmsBookingController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(UpdateHmsBookingRequest $request, $id)
     {
         $business_id = request()->session()->get('user.business_id');
         

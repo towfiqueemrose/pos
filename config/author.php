@@ -13,11 +13,11 @@ return [
     |
     */
 
-    'vendor' => 'Ultimate Fosters',
-    'vendor_url' => 'http://ultimatefosters.com',
-    'email' => 'thewebfosters@gmail.com',
+    'vendor' => 'Your Company',
+    'vendor_url' => 'https://example.com',
+    'email' => 'support@example.com',
     'app_version' => '6.4',
-    'lic1' => 'aHR0cHM6Ly9sLnVsdGltYXRlZm9zdGVycy5jb20vYXBpL3R5cGVfMQ==',
+    'lic1' => '',
     'pid' => 1,
     'envato_purchase_code' => env('ENVATO_PURCHASE_CODE', 0),
 ];

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreSellingPriceGroupRequest;
+use App\Http\Requests\UpdateSellingPriceGroupRequest;
 use App\SellingPriceGroup;
 use App\Utils\Util;
 use App\Variation;
@@ -85,7 +87,7 @@ class SellingPriceGroupController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreSellingPriceGroupRequest $request)
     {
         if (! auth()->user()->can('product.create')) {
             abort(403, 'Unauthorized action.');
@@ -155,7 +157,7 @@ class SellingPriceGroupController extends Controller
      * @param  \App\SellingPriceGroup  $sellingPriceGroup
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateSellingPriceGroupRequest $request, $id)
     {
         if (! auth()->user()->can('product.update')) {
             abort(403, 'Unauthorized action.');

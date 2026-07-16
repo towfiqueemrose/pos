@@ -12,6 +12,7 @@ use Modules\Accounting\Entities\AccountingAccountsTransaction;
 use Modules\Accounting\Entities\AccountingAccountType;
 use Modules\Accounting\Entities\AccountingAccTransMapping;
 use Modules\Accounting\Entities\AccountingBudget;
+use Modules\Accounting\Http\Requests\UpdateSettingsRequest;
 use Modules\Accounting\Utils\AccountingUtil;
 use App\BusinessLocation;
 use App\ExpenseCategory;
@@ -176,7 +177,7 @@ class SettingsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateSettingsRequest $request, $id)
     {
         //
     }

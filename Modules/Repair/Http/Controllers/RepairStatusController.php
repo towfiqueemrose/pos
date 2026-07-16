@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Repair\Entities\RepairStatus;
+use Modules\Repair\Http\Requests\StoreRepairStatusRequest;
+use Modules\Repair\Http\Requests\UpdateRepairStatusRequest;
 use Modules\Repair\Utils\RepairUtil;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -92,7 +94,7 @@ class RepairStatusController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreRepairStatusRequest $request)
     {
         $business_id = request()->session()->get('user.business_id');
 
@@ -150,7 +152,7 @@ class RepairStatusController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRepairStatusRequest $request, $id)
     {
         $business_id = request()->session()->get('user.business_id');
 

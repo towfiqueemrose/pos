@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\ExpenseCategory;
+use App\Http\Requests\StoreExpenseCategoryRequest;
+use App\Http\Requests\UpdateExpenseCategoryRequest;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -73,7 +75,7 @@ class ExpenseCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreExpenseCategoryRequest $request)
     {
         if (! (auth()->user()->can('expense.add') || auth()->user()->can('expense.edit'))) {
             abort(403, 'Unauthorized action.');
@@ -145,7 +147,7 @@ class ExpenseCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateExpenseCategoryRequest $request, $id)
     {
         if (! (auth()->user()->can('expense.add') || auth()->user()->can('expense.edit'))) {
             abort(403, 'Unauthorized action.');

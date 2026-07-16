@@ -18,6 +18,8 @@ use App\Utils\ProductUtil;
 use App\Utils\TransactionUtil;
 use App\Variation;
 use Excel;
+use App\Http\Requests\StorePurchaseRequest;
+use App\Http\Requests\UpdatePurchaseRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Spatie\Activitylog\Models\Activity;
@@ -288,7 +290,7 @@ class PurchaseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePurchaseRequest $request)
     {
         if (! auth()->user()->can('purchase.create')) {
             abort(403, 'Unauthorized action.');
@@ -639,7 +641,7 @@ class PurchaseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdatePurchaseRequest $request, $id)
     {
         if (! auth()->user()->can('purchase.update')) {
             abort(403, 'Unauthorized action.');

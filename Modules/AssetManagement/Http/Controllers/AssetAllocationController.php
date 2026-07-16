@@ -8,6 +8,8 @@ use App\Utils\Util;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\AssetManagement\Http\Requests\StoreAssetAllocationRequest;
+use Modules\AssetManagement\Http\Requests\UpdateAssetAllocationRequest;
 use Illuminate\Routing\Controller;
 use Modules\AssetManagement\Entities\Asset;
 use Modules\AssetManagement\Entities\AssetTransaction;
@@ -171,7 +173,7 @@ class AssetAllocationController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreAssetAllocationRequest $request)
     {
         $business_id = request()->session()->get('user.business_id');
 
@@ -275,7 +277,7 @@ class AssetAllocationController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateAssetAllocationRequest $request, $id)
     {
         $business_id = request()->session()->get('user.business_id');
 

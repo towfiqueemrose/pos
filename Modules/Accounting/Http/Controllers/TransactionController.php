@@ -15,6 +15,8 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Accounting\Entities\AccountingAccount;
 use Modules\Accounting\Entities\AccountingAccountsTransaction;
+use Modules\Accounting\Http\Requests\StoreTransactionRequest;
+use Modules\Accounting\Http\Requests\UpdateTransactionRequest;
 use Yajra\DataTables\Facades\DataTables;
 
 class TransactionController extends Controller
@@ -659,7 +661,7 @@ class TransactionController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreTransactionRequest $request)
     {
         //
     }
@@ -689,11 +691,11 @@ class TransactionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request  $request
+     * @param  UpdateTransactionRequest  $request
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateTransactionRequest $request, $id)
     {
         //
     }

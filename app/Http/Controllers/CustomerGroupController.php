@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\CustomerGroup;
+use App\Http\Requests\StoreCustomerGroupRequest;
+use App\Http\Requests\UpdateCustomerGroupRequest;
 use App\SellingPriceGroup;
 use App\Utils\Util;
-use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
 class CustomerGroupController extends Controller
@@ -85,7 +86,7 @@ class CustomerGroupController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCustomerGroupRequest $request)
     {
         if (! auth()->user()->can('customer.create')) {
             abort(403, 'Unauthorized action.');
@@ -144,7 +145,7 @@ class CustomerGroupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCustomerGroupRequest $request, $id)
     {
         if (! auth()->user()->can('customer.update')) {
             abort(403, 'Unauthorized action.');

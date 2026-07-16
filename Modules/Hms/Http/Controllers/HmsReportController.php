@@ -13,6 +13,8 @@ use Modules\Hms\Entities\HmsRoomType;
 use Modules\Hms\Entities\HmsBookingLine;
 use App\Utils\ModuleUtil;
 use Modules\Hms\Entities\HmsTransactionClass;
+use Modules\Hms\Http\Requests\StoreHmsReportRequest;
+use Modules\Hms\Http\Requests\UpdateHmsReportRequest;
 
 
 class HmsReportController extends Controller
@@ -325,7 +327,7 @@ class HmsReportController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(StoreHmsReportRequest $request)
     {
         //
     } 
@@ -356,7 +358,7 @@ class HmsReportController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(UpdateHmsReportRequest $request, $id)
     {
         //
     }

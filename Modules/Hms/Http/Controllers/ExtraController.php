@@ -8,6 +8,8 @@ use Illuminate\Routing\Controller;
 use Modules\Hms\Entities\HmsExtra;
 use Yajra\DataTables\Facades\DataTables;
 use App\Utils\ModuleUtil;
+use Modules\Hms\Http\Requests\StoreExtraRequest;
+use Modules\Hms\Http\Requests\UpdateExtraRequest;
 
 
 class ExtraController extends Controller
@@ -85,7 +87,7 @@ class ExtraController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(StoreExtraRequest $request)
     {
 
         $business_id = request()->session()->get('user.business_id');
@@ -169,7 +171,7 @@ class ExtraController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(UpdateExtraRequest $request, $id)
     {
      
         if (! (auth()->user()->can('superadmin') || $this->moduleUtil->hasThePermissionInSubscription($business_id, 'hms_module'))) {

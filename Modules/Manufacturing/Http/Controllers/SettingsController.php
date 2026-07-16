@@ -5,9 +5,9 @@ namespace Modules\Manufacturing\Http\Controllers;
 use App\Business;
 use App\System;
 use App\Utils\ModuleUtil;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Manufacturing\Http\Requests\StoreManufacturingSettingsRequest;
 use Modules\Manufacturing\Utils\ManufacturingUtil;
 
 class SettingsController extends Controller
@@ -55,7 +55,7 @@ class SettingsController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreManufacturingSettingsRequest $request)
     {
         $business_id = request()->session()->get('user.business_id');
         if (! (auth()->user()->can('superadmin') || $this->moduleUtil->hasThePermissionInSubscription($business_id, 'manufacturing_module'))) {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\BusinessLocation;
 use App\CashRegister;
 use App\Utils\CashRegisterUtil;
+use App\Http\Requests\StoreCashRegisterRequest;
 use App\Utils\ModuleUtil;
 use Illuminate\Http\Request;
 
@@ -65,7 +66,7 @@ class CashRegisterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCashRegisterRequest $request)
     {
         //like:repair
         $sub_type = request()->get('sub_type');

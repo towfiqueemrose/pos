@@ -13,6 +13,7 @@ use App\Utils\ContactUtil;
 use App\Utils\ModuleUtil;
 use App\Utils\ProductUtil;
 use App\Utils\TransactionUtil;
+use App\Http\Requests\StoreSellReturnRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Spatie\Activitylog\Models\Activity;
@@ -263,7 +264,7 @@ class SellReturnController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreSellReturnRequest $request)
     {
         if (! auth()->user()->can('access_sell_return') && ! auth()->user()->can('access_own_sell_return')) {
             abort(403, 'Unauthorized action.');

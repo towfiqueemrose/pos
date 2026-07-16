@@ -12,6 +12,8 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\View;
 use Modules\Essentials\Entities\EssentialsTodoComment;
 use Modules\Essentials\Entities\ToDo;
+use Modules\Essentials\Http\Requests\StoreToDoRequest;
+use Modules\Essentials\Http\Requests\UpdateToDoRequest;
 use Modules\Essentials\Notifications\NewTaskCommentNotification;
 use Modules\Essentials\Notifications\NewTaskDocumentNotification;
 use Modules\Essentials\Notifications\NewTaskNotification;
@@ -312,7 +314,7 @@ class ToDoController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreToDoRequest $request)
     {
         $business_id = $request->session()->get('user.business_id');
 
@@ -389,7 +391,7 @@ class ToDoController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateToDoRequest $request, $id)
     {
         $business_id = $request->session()->get('user.business_id');
         if (! (auth()->user()->can('superadmin') || $this->moduleUtil->hasThePermissionInSubscription($business_id, 'essentials_module')) && ! auth()->user()->can('essentials.edit_todos')) {

@@ -17,7 +17,7 @@ class Contact extends Authenticatable
      *
      * @var array
      */
-    protected $guarded = ['id'];
+    protected $guarded = ['id', 'created_at', 'updated_at', 'deleted_at'];
 
     /**
      * The attributes that should be cast to native types.

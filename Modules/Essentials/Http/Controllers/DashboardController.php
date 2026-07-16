@@ -14,6 +14,8 @@ use Modules\Essentials\Entities\EssentialsAttendance;
 use Modules\Essentials\Entities\EssentialsHoliday;
 use Modules\Essentials\Entities\EssentialsLeave;
 use Modules\Essentials\Entities\EssentialsUserSalesTarget;
+use Modules\Essentials\Http\Requests\StoreEssentialsDashboardRequest;
+use Modules\Essentials\Http\Requests\UpdateEssentialsDashboardRequest;
 use Modules\Essentials\Utils\EssentialsUtil;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -254,7 +256,7 @@ class DashboardController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreEssentialsDashboardRequest $request)
     {
         //
     }
@@ -288,7 +290,7 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateEssentialsDashboardRequest $request, $id)
     {
         //
     }

@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Printer;
 use Datatables;
-use Illuminate\Http\Request;
+use App\Http\Requests\StorePrinterRequest;
+use App\Http\Requests\UpdatePrinterRequest;
 
 class PrinterController extends Controller
 {
@@ -75,7 +76,7 @@ class PrinterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePrinterRequest $request)
     {
         if (! auth()->user()->can('access_printers')) {
             abort(403, 'Unauthorized action.');
@@ -152,7 +153,7 @@ class PrinterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdatePrinterRequest $request, $id)
     {
         if (! auth()->user()->can('access_printers')) {
             abort(403, 'Unauthorized action.');

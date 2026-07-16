@@ -11,6 +11,8 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Modules\Spreadsheet\Entities\Spreadsheet;
 use Modules\Spreadsheet\Entities\SpreadsheetShare;
+use Modules\Spreadsheet\Http\Requests\StoreSpreadsheetRequest;
+use Modules\Spreadsheet\Http\Requests\UpdateSpreadsheetRequest;
 use Modules\Spreadsheet\Notifications\SpreadsheetShared;
 use Notification;
 use Spatie\Permission\Models\Role;
@@ -143,7 +145,7 @@ class SpreadsheetController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreSpreadsheetRequest $request)
     {
         $business_id = request()->session()->get('user.business_id');
 
@@ -254,7 +256,7 @@ class SpreadsheetController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateSpreadsheetRequest $request, $id)
     {
         $business_id = request()->session()->get('user.business_id');
 

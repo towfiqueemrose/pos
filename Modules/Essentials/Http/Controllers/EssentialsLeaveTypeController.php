@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Essentials\Entities\EssentialsLeaveType;
+use Modules\Essentials\Http\Requests\StoreLeaveTypeRequest;
+use Modules\Essentials\Http\Requests\UpdateLeaveTypeRequest;
 use Yajra\DataTables\Facades\DataTables;
 
 class EssentialsLeaveTypeController extends Controller
@@ -81,7 +83,7 @@ class EssentialsLeaveTypeController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreLeaveTypeRequest $request)
     {
         $business_id = $request->session()->get('user.business_id');
 
@@ -152,7 +154,7 @@ class EssentialsLeaveTypeController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateLeaveTypeRequest $request, $id)
     {
         $business_id = $request->session()->get('user.business_id');
         if (! (auth()->user()->can('superadmin') || $this->moduleUtil->hasThePermissionInSubscription($business_id, 'essentials_module'))) {

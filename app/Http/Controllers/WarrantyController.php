@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreWarrantyRequest;
+use App\Http\Requests\UpdateWarrantyRequest;
 use App\Warranty;
-use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
 class WarrantyController extends Controller
@@ -53,7 +54,7 @@ class WarrantyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreWarrantyRequest $request)
     {
         $business_id = request()->session()->get('user.business_id');
 
@@ -113,7 +114,7 @@ class WarrantyController extends Controller
      * @param  \App\Warranty  $warranty
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateWarrantyRequest $request, $id)
     {
         $business_id = request()->session()->get('user.business_id');
 

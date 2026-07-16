@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreVariationTemplateRequest;
+use App\Http\Requests\UpdateVariationTemplateRequest;
 use App\ProductVariation;
 use App\Variation;
 use App\VariationTemplate;
 use App\VariationValueTemplate;
 use DB;
-use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
 class VariationTemplateController extends Controller
@@ -68,7 +69,7 @@ class VariationTemplateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreVariationTemplateRequest $request)
     {
         try {
             $input = $request->only(['name']);
@@ -138,7 +139,7 @@ class VariationTemplateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateVariationTemplateRequest $request, $id)
     {
         if (request()->ajax()) {
             try {

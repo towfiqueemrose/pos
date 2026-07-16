@@ -8,6 +8,8 @@ use App\Category;
 use App\Discount;
 use App\SellingPriceGroup;
 use App\Utils\Util;
+use App\Http\Requests\StoreDiscountRequest;
+use App\Http\Requests\UpdateDiscountRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
@@ -132,7 +134,7 @@ class DiscountController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreDiscountRequest $request)
     {
         if (! auth()->user()->can('discount.access')) {
             abort(403, 'Unauthorized action.');
@@ -230,7 +232,7 @@ class DiscountController extends Controller
      * @param  \App\Discount  $discount
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateDiscountRequest $request, $id)
     {
         if (! auth()->user()->can('discount.access')) {
             abort(403, 'Unauthorized action.');

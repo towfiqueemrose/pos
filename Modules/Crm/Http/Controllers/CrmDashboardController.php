@@ -7,6 +7,8 @@ use App\Contact;
 use App\User;
 use DB;
 use Illuminate\Http\Request;
+use Modules\Crm\Http\Requests\StoreCrmDashboardRequest;
+use Modules\Crm\Http\Requests\UpdateCrmDashboardRequest;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Crm\Entities\CrmCallLog;
@@ -233,7 +235,7 @@ class CrmDashboardController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreCrmDashboardRequest $request)
     {
         //
     }
@@ -267,7 +269,7 @@ class CrmDashboardController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCrmDashboardRequest $request, $id)
     {
         //
     }

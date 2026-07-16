@@ -10,6 +10,8 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Storage;
 use Modules\Essentials\Entities\Document;
+use Modules\Essentials\Http\Requests\StoreDocumentRequest;
+use Modules\Essentials\Http\Requests\UpdateDocumentRequest;
 use Modules\Essentials\Entities\DocumentShare;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -157,7 +159,7 @@ class DocumentController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreDocumentRequest $request)
     {
         $business_id = $request->session()->get('user.business_id');
         if (! (auth()->user()->can('superadmin') || $this->moduleUtil->hasThePermissionInSubscription($business_id, 'essentials_module'))) {
@@ -255,7 +257,7 @@ class DocumentController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function update(Request $request)
+    public function update(UpdateDocumentRequest $request)
     {
     }
 

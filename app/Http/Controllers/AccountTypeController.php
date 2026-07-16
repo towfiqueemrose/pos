@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\AccountType;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreAccountTypeRequest;
+use App\Http\Requests\UpdateAccountTypeRequest;
 
 class AccountTypeController extends Controller
 {
@@ -44,7 +45,7 @@ class AccountTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreAccountTypeRequest $request)
     {
         if (! auth()->user()->can('account.access')) {
             abort(403, 'Unauthorized action.');
@@ -112,7 +113,7 @@ class AccountTypeController extends Controller
      * @param  \App\AccountType  $accountType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateAccountTypeRequest $request, $id)
     {
         if (! auth()->user()->can('account.access')) {
             abort(403, 'Unauthorized action.');

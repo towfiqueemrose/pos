@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use Modules\Accounting\Entities\ChartOfAccount;
+use Modules\Accounting\Http\Requests\StoreChartOfAccountRequest;
+use Modules\Accounting\Http\Requests\UpdateChartOfAccountRequest;
 use Yajra\DataTables\Facades\DataTables;
 use Maatwebsite\Excel\Facades\Excel;
 use Modules\Accounting\Entities\AccountDetailType;
@@ -169,18 +171,8 @@ class ChartOfAccountController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreChartOfAccountRequest $request)
     {
-        $request->validate([
-            'name' => ['required'],
-            'gl_code' => ['required', 'numeric', 'unique:chart_of_accounts,gl_code'],
-            'currency_id' => ['required'],
-            'opening_balance' => ['sometimes', 'required', 'numeric'],
-            'payment_type_id' => ['sometimes', 'required'],
-            'account_subtype_id' => ['required'],
-            'detail_type_id' => ['required'],
-        ]);
-
         try {
 
             DB::transaction(function () use ($request) {
@@ -287,18 +279,8 @@ class ChartOfAccountController extends Controller
      * @param int $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateChartOfAccountRequest $request, $id)
     {
-        $request->validate([
-            'name' => ['required'],
-            'gl_code' => ['required', 'numeric', Rule::unique('chart_of_accounts', 'gl_code')->ignore($id)],
-            'currency_id' => ['required'],
-            'opening_balance' => ['sometimes', 'required', 'numeric'],
-            'payment_type_id' => ['sometimes', 'required'],
-            'account_subtype_id' => ['required'],
-            'detail_type_id' => ['required'],
-        ]);
-
         $chart_of_account = ChartOfAccount::findOrFail($id);
         $chart_of_account->name = $request->name;
         $chart_of_account->parent_id = $request->parent_id;

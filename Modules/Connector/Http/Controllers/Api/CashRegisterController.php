@@ -5,9 +5,9 @@ namespace Modules\Connector\Http\Controllers\Api;
 use App\CashRegister;
 use App\CashRegisterTransaction;
 use App\Transaction;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Modules\Connector\Http\Requests\StoreConnectorCashRegisterRequest;
 use Modules\Connector\Transformers\CommonResource;
 
 /**
@@ -179,7 +179,7 @@ class CashRegisterController extends ApiController
             }
         }
      */
-    public function store(Request $request)
+    public function store(StoreConnectorCashRegisterRequest $request)
     {
         $user = Auth::user();
         $business_id = $user->business_id;

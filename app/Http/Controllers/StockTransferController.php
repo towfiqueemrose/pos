@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\BusinessLocation;
+use App\Http\Requests\StoreStockTransferRequest;
 use App\PurchaseLine;
 use App\Transaction;
 use App\TransactionSellLinesPurchaseLines;
@@ -193,7 +194,7 @@ class StockTransferController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreStockTransferRequest $request)
     {
         if (! auth()->user()->can('purchase.create')) {
             abort(403, 'Unauthorized action.');

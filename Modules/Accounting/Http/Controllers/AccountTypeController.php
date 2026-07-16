@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Accounting\Entities\AccountingAccountType;
+use Modules\Accounting\Http\Requests\StoreAccountTypeRequest;
+use Modules\Accounting\Http\Requests\UpdateAccountTypeRequest;
 use Yajra\DataTables\Facades\DataTables;
 
 class AccountTypeController extends Controller
@@ -106,7 +108,7 @@ class AccountTypeController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreAccountTypeRequest $request)
     {
         $business_id = request()->session()->get('user.business_id');
 
@@ -185,7 +187,7 @@ class AccountTypeController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateAccountTypeRequest $request, $id)
     {
         $business_id = request()->session()->get('user.business_id');
 

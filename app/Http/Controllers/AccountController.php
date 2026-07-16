@@ -11,6 +11,7 @@ use App\TransactionPayment;
 use App\Utils\ModuleUtil;
 use App\Utils\Util;
 use DB;
+use App\Http\Requests\StoreAccountRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Yajra\DataTables\Facades\DataTables;
@@ -220,7 +221,7 @@ class AccountController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreAccountRequest $request)
     {
         if (! auth()->user()->can('account.access')) {
             abort(403, 'Unauthorized action.');

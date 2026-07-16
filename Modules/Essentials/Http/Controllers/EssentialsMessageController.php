@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Essentials\Entities\EssentialsMessage;
+use Modules\Essentials\Http\Requests\StoreMessageRequest;
 use Modules\Essentials\Notifications\NewMessageNotification;
 
 class EssentialsMessageController extends Controller
@@ -69,7 +70,7 @@ class EssentialsMessageController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreMessageRequest $request)
     {
         $business_id = $request->session()->get('user.business_id');
         if (! (auth()->user()->can('superadmin') || $this->moduleUtil->hasThePermissionInSubscription($business_id, 'essentials_module'))) {

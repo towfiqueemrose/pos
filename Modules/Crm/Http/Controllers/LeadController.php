@@ -8,6 +8,8 @@ use App\User;
 use App\Utils\ModuleUtil;
 use App\Utils\Util;
 use Illuminate\Http\Request;
+use Modules\Crm\Http\Requests\StoreLeadRequest;
+use Modules\Crm\Http\Requests\UpdateLeadRequest;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Crm\Entities\CrmContact;
@@ -321,7 +323,7 @@ class LeadController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreLeadRequest $request)
     {
         $business_id = request()->session()->get('user.business_id');
         if (! (auth()->user()->can('superadmin') || $this->moduleUtil->hasThePermissionInSubscription($business_id, 'crm_module'))) {
@@ -446,7 +448,7 @@ class LeadController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateLeadRequest $request, $id)
     {
         $business_id = request()->session()->get('user.business_id');
         $can_access_all_leads = auth()->user()->can('crm.access_all_leads');

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Barcode;
+use App\Http\Requests\StoreBarcodeRequest;
+use App\Http\Requests\UpdateBarcodeRequest;
 use Datatables;
-use Illuminate\Http\Request;
 
 class BarcodeController extends Controller
 {
@@ -74,7 +75,7 @@ class BarcodeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBarcodeRequest $request)
     {
         if (! auth()->user()->can('barcode_settings.access')) {
             abort(403, 'Unauthorized action.');
@@ -154,7 +155,7 @@ class BarcodeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateBarcodeRequest $request, $id)
     {
         if (! auth()->user()->can('barcode_settings.access')) {
             abort(403, 'Unauthorized action.');

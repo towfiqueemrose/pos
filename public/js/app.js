@@ -1269,62 +1269,6 @@ $(document).ready(function() {
         ],
     });
     $('.location_add_modal, .location_edit_modal').on('shown.bs.modal', function(e) {
-        $('form#business_location_add_form')
-            .submit(function(e) {
-                e.preventDefault();
-            })
-            .validate({
-                rules: {
-                    location_id: {
-                        remote: {
-                            url: '/business-location/check-location-id',
-                            type: 'post',
-                            data: {
-                                location_id: function() {
-                                    return $('#location_id').val();
-                                },
-                                hidden_id: function() {
-                                    if ($('#hidden_id').length) {
-                                        return $('#hidden_id').val();
-                                    } else {
-                                        return '';
-                                    }
-                                },
-                            },
-                        },
-                    },
-                },
-                messages: {
-                    location_id: {
-                        remote: LANG.location_id_already_exists,
-                    },
-                },
-                submitHandler: function(form) {
-                    e.preventDefault();
-                    var data = $(form).serialize();
-
-                    $.ajax({
-                        method: 'POST',
-                        url: $(form).attr('action'),
-                        dataType: 'json',
-                        data: data,
-                        beforeSend: function(xhr) {
-                            __disable_submit_button($(form).find('button[type="submit"]'));
-                        },
-                        success: function(result) {
-                            if (result.success == true) {
-                                $('div.location_add_modal').modal('hide');
-                                $('div.location_edit_modal').modal('hide');
-                                toastr.success(result.msg);
-                                business_locations.ajax.reload();
-                            } else {
-                                toastr.error(result.msg);
-                            }
-                        },
-                    });
-                },
-            });
-
         $('form#business_location_add_form').find('#featured_products').select2({
             minimumInputLength: 2,
             allowClear: true,
@@ -1353,7 +1297,7 @@ $(document).ready(function() {
                     };
                 },
             },
-        })
+        });
     });
 
     if ($('#header_text').length) {

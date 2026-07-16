@@ -10,7 +10,7 @@ class HmsRoomType extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $guarded = ['id'];
+    protected $guarded = ['id', 'created_at', 'updated_at', 'deleted_at', 'created_by'];
 
     public function Rooms()
     {

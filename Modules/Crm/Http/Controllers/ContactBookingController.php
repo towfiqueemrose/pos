@@ -6,6 +6,7 @@ use App\BusinessLocation;
 use App\Restaurant\Booking;
 use App\Utils\Util;
 use Illuminate\Http\Request;
+use Modules\Crm\Http\Requests\StoreContactBookingRequest;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Yajra\DataTables\Facades\DataTables;
@@ -100,7 +101,7 @@ class ContactBookingController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreContactBookingRequest $request)
     {
         try {
             if ($request->ajax()) {

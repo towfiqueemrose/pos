@@ -10,6 +10,8 @@ use Modules\Hms\Entities\HmsRoomUnavailable;
 use App\Utils\Util;
 use Yajra\DataTables\Facades\DataTables;
 use App\Utils\ModuleUtil;
+use Modules\Hms\Http\Requests\StoreUnavailableRequest;
+use Modules\Hms\Http\Requests\UpdateUnavailableRequest;
 
 class UnavailableController extends Controller
 {
@@ -111,7 +113,7 @@ class UnavailableController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(StoreUnavailableRequest $request)
     {
         $business_id = request()->session()->get('user.business_id');
         
@@ -206,7 +208,7 @@ class UnavailableController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUnavailableRequest $request, $id)
     {
         $business_id = request()->session()->get('user.business_id');
         

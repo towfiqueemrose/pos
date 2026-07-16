@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Modules\Accounting\Entities\ChartOfAccount;
 use Modules\Accounting\Entities\JournalEntry;
+use Modules\Accounting\Http\Requests\StoreJournalEntryRequest;
 use Yajra\DataTables\Facades\DataTables;
 
 class JournalEntryController extends Controller
@@ -163,15 +164,8 @@ class JournalEntryController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreJournalEntryRequest $request)
     {
-        $request->validate([
-            'location_id' => ['required'],
-            'currency_id' => ['required'],
-            'journal_entry_data' => ['required', 'array'], // {'debit', 'credit', 'amount', 'notes'}
-            'date' => ['required', 'date'],
-        ]);
-
         foreach ($request->journal_entry_data as $data) {
             try {
                 DB::beginTransaction();

@@ -8,6 +8,8 @@ use App\User;
 use App\Utils\ModuleUtil;
 use DB;
 use Illuminate\Http\Request;
+use Modules\Crm\Http\Requests\StoreContactLoginRequest;
+use Modules\Crm\Http\Requests\UpdateContactLoginRequest;
 use Illuminate\Support\Facades\Hash;
 use Modules\Crm\Entities\CrmContact;
 use Modules\Crm\Entities\CrmContactPersonCommission;
@@ -135,7 +137,7 @@ class ContactLoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreContactLoginRequest $request)
     {
         $business_id = request()->session()->get('user.business_id');
         if (! (auth()->user()->can('superadmin') || $this->moduleUtil->hasThePermissionInSubscription($business_id, 'crm_module')) || ! auth()->user()->can('crm.access_contact_login')) {
@@ -217,7 +219,7 @@ class ContactLoginController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateContactLoginRequest $request, $id)
     {
         $business_id = request()->session()->get('user.business_id');
         if (! (auth()->user()->can('superadmin') || $this->moduleUtil->hasThePermissionInSubscription($business_id, 'crm_module')) || ! auth()->user()->can('crm.access_contact_login')) {

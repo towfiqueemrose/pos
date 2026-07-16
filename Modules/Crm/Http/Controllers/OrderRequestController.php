@@ -12,6 +12,7 @@ use App\Utils\ProductUtil;
 use App\Utils\TransactionUtil;
 use App\Utils\Util;
 use Illuminate\Http\Request;
+use Modules\Crm\Http\Requests\StoreOrderRequestRequest;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
@@ -194,7 +195,7 @@ class OrderRequestController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreOrderRequestRequest $request)
     {
         $is_direct_sale = true;
 

@@ -10,6 +10,8 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Modules\Accounting\Entities\AccountingAccountsTransaction;
 use Modules\Accounting\Entities\AccountingAccTransMapping;
+use Modules\Accounting\Http\Requests\StoreTransferRequest;
+use Modules\Accounting\Http\Requests\UpdateTransferRequest;
 use Modules\Accounting\Utils\AccountingUtil;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -164,7 +166,7 @@ class TransferController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreTransferRequest $request)
     {
         $business_id = request()->session()->get('user.business_id');
 
@@ -289,7 +291,7 @@ class TransferController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateTransferRequest $request, $id)
     {
         $business_id = request()->session()->get('user.business_id');
 

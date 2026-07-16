@@ -11,7 +11,7 @@ class VariationGroupPrice extends Model
      *
      * @var array
      */
-    protected $guarded = ['id'];
+    protected $guarded = ['id', 'created_at', 'updated_at', 'deleted_at'];
 
     /**
      * Accessor that Calculates the price of price group of a product based on price_type of it.

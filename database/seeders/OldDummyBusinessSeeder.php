@@ -20,7 +20,7 @@ class OldDummyBusinessSeeder extends Seeder
     {
         DB::beginTransaction();
 
-        $password = Hash::make('123456');
+        $password = Hash::make('password');
 
         $today = \Carbon::now()->format('Y-m-d H:i:s');
         $yesterday = \Carbon::now()->subDays(2)->format('Y-m-d H:i:s');
@@ -36,13 +36,13 @@ class OldDummyBusinessSeeder extends Seeder
         			tax_number_2, tax_label_2, default_sales_tax, default_profit_percent, owner_id, 
         			time_zone, fy_start_month, accounting_method, default_sales_discount, 
         			sell_price_tax, logo, sku_prefix, keyboard_shortcuts, created_at, updated_at, enable_editing_product_from_purchase) VALUES
-					(1, 'Awesome Shop', 2, '2018-01-01', '3412569900', 'GSTIN', NULL, NULL, NULL, 25, 1, 
+					(1, 'Awesome Shop', 2, '2018-01-01', '0000000000', 'GSTIN', NULL, NULL, NULL, 25, 1, 
 					'America/Phoenix', 1, 'fifo', '10.00', 'includes', NULL, 'AS', '$shortcuts', 
 					'2018-01-04 07:45:19', '2018-01-04 07:47:08', 1)");
 
         DB::insert("INSERT INTO business_locations (id, business_id, name, landmark, country, state, 
         			city, zip_code, invoice_scheme_id, invoice_layout_id, print_receipt_on_invoice,receipt_printer_type,deleted_at, created_at, updated_at) VALUES
-					(1, 1, 'Awesome Shop', 'Linking Street', 'USA', 'Arizona', 'Phoenix', '85001', 1, 1, 1,'browser',
+					(1, 1, 'Awesome Shop', '123 Test Street', 'USA', 'Arizona', 'Phoenix', '85001', 1, 1, 1,'browser',
 					NULL, '2018-01-04 07:45:20', '2018-01-04 07:45:20')");
 
         DB::insert("INSERT INTO users (id, surname, first_name, last_name, username, email, 
@@ -99,20 +99,20 @@ class OldDummyBusinessSeeder extends Seeder
         			tax_number, city, state, country, landmark, mobile, landline, 
         			alternate_number, pay_term_number, pay_term_type, created_by, is_default, 
         			deleted_at, created_at, updated_at) VALUES
-					(1, 1, 'customer', NULL, 'Walk-In Customer', NULL, 'Phoenix', 'Arizona', 'USA', 'Linking Street', '(378) 400-1234', NULL, NULL, NULL, NULL, 1, 1, NULL, '2018-01-04 02:15:20', '2018-01-04 02:35:37'),
-					(2, 1, 'supplier', 'Alpha Clothings', 'Michael', '4590091535', 'Phoenix', 'Arizona', 
-					'USA', 'Linking Street', '(378) 400-1234', NULL, NULL, 15, 'days', 1, 0, NULL, 
+					(1, 1, 'customer', NULL, 'Walk-In Customer', NULL, 'Phoenix', 'Arizona', 'USA', '123 Test Street', '(555) 000-0000', NULL, NULL, NULL, NULL, 1, 1, NULL, '2018-01-04 02:15:20', '2018-01-04 02:35:37'),
+					(2, 1, 'supplier', 'Alpha Clothings', 'John', '0000000000', 'Phoenix', 'Arizona', 
+					'USA', '123 Test Street', '(555) 000-0000', NULL, NULL, 15, 'days', 1, 0, NULL, 
 					'2018-01-04 02:29:38', '2018-01-04 02:35:10'),
-					(3, 1, 'supplier', 'Manhattan Clothing Ltd.', 'Philip', '54869310093', 'Phoenix', 
-					'Arizona', 'USA', 'Linking Street', '(378) 400-1234', NULL, NULL, 15, 'days', 1, 0, 
+					(3, 1, 'supplier', 'Manhattan Clothing Ltd.', 'Jane', '0000000000', 'Phoenix', 
+					'Arizona', 'USA', '123 Test Street', '(555) 000-0000', NULL, NULL, 15, 'days', 1, 0, 
 					NULL, '2018-01-04 02:30:55', '2018-01-04 02:44:06'),
-					(4, 1, 'customer', NULL, 'Harry', NULL, 'Phoenix', 'Arizona', 'USA', 'Linking Street', 
-					'(378) 400-1234', NULL, NULL, NULL, NULL, 1, 0, NULL, '2018-01-04 02:31:40', '2018-01-04 02:35:32'),
-					(5, 1, 'supplier', 'Digital Ocean', 'Mike McCubbin', '52965489001', 'Phoenix', 
-					'Arizona', 'USA', 'Linking Street', '(378) 400-1234', NULL, NULL, 30, 'days', 1, 0,
+					(4, 1, 'customer', NULL, 'Bob', NULL, 'Phoenix', 'Arizona', 'USA', '123 Test Street', 
+					'(555) 000-0000', NULL, NULL, NULL, NULL, 1, 0, NULL, '2018-01-04 02:31:40', '2018-01-04 02:35:32'),
+					(5, 1, 'supplier', 'Digital Ocean', 'Alice Smith', '0000000000', 'Phoenix', 
+					'Arizona', 'USA', '123 Test Street', '(555) 000-0000', NULL, NULL, 30, 'days', 1, 0,
 					 NULL, '2018-01-06 12:23:22', '2018-01-06 12:23:22'),
-					(6, 1, 'supplier', 'Univer Suppliers', 'Jackson Hill', '5459000655', 'Phoenix', 
-					'Arizona', 'USA', 'Linking Street', '(378) 400-1234', NULL, NULL, 45, 'days', 1, 0, 
+					(6, 1, 'supplier', 'Univer Suppliers', 'Charlie Brown', '0000000000', 'Phoenix', 
+					'Arizona', 'USA', '123 Test Street', '(555) 000-0000', NULL, NULL, 45, 'days', 1, 0, 
 					NULL, '2018-01-06 12:25:09', '2018-01-06 12:25:09')");
 
         DB::insert("INSERT INTO tax_rates (id, business_id, name, amount, is_tax_group, 
@@ -357,7 +357,7 @@ class OldDummyBusinessSeeder extends Seeder
 					(4, 9, '750.00', 'cash', NULL, NULL, 'visa', NULL, NULL, NULL, NULL, NULL, NULL, '2018-01-09 17:30:35', 1, NULL, '2018-01-06 07:07:45', '2018-01-06 07:07:45'),
 					(5, 10, '412.50', 'cash', NULL, NULL, 'visa', NULL, NULL, NULL, NULL, NULL, NULL, '2018-01-09 17:30:35', 1, NULL, '2018-01-06 07:08:03', '2018-01-06 07:08:03'),
 					(6, 4, '2000.00', 'cash', NULL, NULL, 'visa', NULL, NULL, NULL, NULL, NULL, NULL, '2018-01-11 17:32:56', 1, 'Cash Payment', '2018-01-11 12:02:56', '2018-01-11 12:02:56'),
-					(7, 3, '3000.00', 'bank_transfer', NULL, NULL, 'visa', NULL, NULL, NULL, NULL, NULL, '502110000631', '2018-01-11 17:34:10', 1, '3000 Paid Via Bank Transfer', '2018-01-11 12:04:10', '2018-01-11 12:04:10'),
+					(7, 3, '3000.00', 'bank_transfer', NULL, NULL, 'visa', NULL, NULL, NULL, NULL, NULL, '000000000000', '2018-01-11 17:34:10', 1, '3000 Paid Via Bank Transfer', '2018-01-11 12:04:10', '2018-01-11 12:04:10'),
 					(8, 2, '84700.00', 'cash', NULL, NULL, 'visa', NULL, NULL, NULL, NULL, NULL, NULL, '2018-01-11 17:34:36', 1, NULL, '2018-01-11 12:04:36', '2018-01-11 12:04:36'),
 					(9, 1, '50000.00', 'cash', NULL, NULL, 'visa', NULL, NULL, NULL, NULL, NULL, NULL, '2018-01-11 17:35:04', 1, NULL, '2018-01-11 12:05:04', '2018-01-11 12:05:04'),
 					(10, 1, '5660.00', 'cash', NULL, NULL, 'visa', NULL, NULL, NULL, NULL, NULL, NULL, '2018-01-11 17:35:17', 1, NULL, '2018-01-11 12:05:17', '2018-01-11 12:05:17')");

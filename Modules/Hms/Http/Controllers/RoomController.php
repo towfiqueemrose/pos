@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\DB;
 use App\Media;
 use App\Category;
 use App\Utils\ModuleUtil;
+use Modules\Hms\Http\Requests\StoreRoomRequest;
+use Modules\Hms\Http\Requests\UpdateRoomRequest;
 
 class RoomController extends Controller
 {
@@ -92,7 +94,7 @@ class RoomController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(StoreRoomRequest $request)
     {
 
         $business_id = request()->session()->get('user.business_id');
@@ -204,7 +206,7 @@ class RoomController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRoomRequest $request, $id)
     {
         $business_id = request()->session()->get('user.business_id');
         

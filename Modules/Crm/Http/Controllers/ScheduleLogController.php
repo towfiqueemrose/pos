@@ -8,6 +8,8 @@ use App\Utils\ModuleUtil;
 use App\Utils\Util;
 use DB;
 use Illuminate\Http\Request;
+use Modules\Crm\Http\Requests\StoreScheduleLogRequest;
+use Modules\Crm\Http\Requests\UpdateScheduleLogRequest;
 use Illuminate\Support\Facades\View;
 use Modules\Crm\Entities\CrmCallLog;
 use Modules\Crm\Entities\Schedule;
@@ -125,7 +127,7 @@ class ScheduleLogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreScheduleLogRequest $request)
     {
         $business_id = request()->session()->get('user.business_id');
         if (! (auth()->user()->can('superadmin') || $this->moduleUtil->hasThePermissionInSubscription($business_id, 'crm_module'))) {
@@ -223,7 +225,7 @@ class ScheduleLogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateScheduleLogRequest $request, $id)
     {
         $business_id = request()->session()->get('user.business_id');
         if (! (auth()->user()->can('superadmin') || $this->moduleUtil->hasThePermissionInSubscription($business_id, 'crm_module'))) {

@@ -18,7 +18,7 @@ class ScheduleUser extends Model
      *
      * @var array
      */
-    protected $guarded = ['id'];
+    protected $guarded = ['id', 'created_at', 'updated_at', 'deleted_at', 'created_by'];
 
     /**
      * Get the schedule that owns the user.

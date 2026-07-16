@@ -9,6 +9,8 @@ use App\Utils\ModuleUtil;
 use App\Utils\Util;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\AssetManagement\Http\Requests\StoreAssetRequest;
+use Modules\AssetManagement\Http\Requests\UpdateAssetRequest;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Modules\AssetManagement\Entities\Asset;
@@ -279,7 +281,7 @@ class AssetController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreAssetRequest $request)
     {
         if (! auth()->user()->can('asset.create')) {
             abort(403, 'Unauthorized action.');
@@ -426,7 +428,7 @@ class AssetController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateAssetRequest $request, $id)
     {
         if (! auth()->user()->can('asset.update')) {
             abort(403, 'Unauthorized action.');

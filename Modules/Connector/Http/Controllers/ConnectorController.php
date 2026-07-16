@@ -2,9 +2,10 @@
 
 namespace Modules\Connector\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Connector\Http\Requests\StoreConnectorRequest;
+use Modules\Connector\Http\Requests\UpdateConnectorRequest;
 
 class ConnectorController extends Controller
 {
@@ -34,7 +35,7 @@ class ConnectorController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreConnectorRequest $request)
     {
     }
 
@@ -64,7 +65,7 @@ class ConnectorController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function update(Request $request)
+    public function update(UpdateConnectorRequest $request)
     {
     }
 

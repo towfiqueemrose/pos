@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\NotificationTemplate;
 use App\Utils\ModuleUtil;
+use Modules\Hms\Http\Requests\StoreHmsSettingRequest;
+use Modules\Hms\Http\Requests\UpdateHmsSettingRequest;
 
 
 class HmsSettingController extends Controller
@@ -56,7 +58,7 @@ class HmsSettingController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(StoreHmsSettingRequest $request)
     {
         $business_id = request()->session()->get('user.business_id');
         
@@ -126,7 +128,7 @@ class HmsSettingController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(UpdateHmsSettingRequest $request, $id)
     {
         //
     }

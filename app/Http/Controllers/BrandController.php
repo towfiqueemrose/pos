@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Brands;
+use App\Http\Requests\StoreBrandRequest;
+use App\Http\Requests\UpdateBrandRequest;
 use App\Utils\ModuleUtil;
-use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
 class BrandController extends Controller
@@ -89,7 +90,7 @@ class BrandController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBrandRequest $request)
     {
         if (! auth()->user()->can('brand.create')) {
             abort(403, 'Unauthorized action.');
@@ -162,7 +163,7 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateBrandRequest $request, $id)
     {
         if (! auth()->user()->can('brand.update')) {
             abort(403, 'Unauthorized action.');

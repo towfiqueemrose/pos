@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Http\Requests\StoreTaxonomyRequest;
+use App\Http\Requests\UpdateTaxonomyRequest;
 use App\Utils\ModuleUtil;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -125,7 +127,7 @@ class TaxonomyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTaxonomyRequest $request)
     {
         $category_type = request()->input('category_type');
         if ($category_type == 'product' && ! auth()->user()->can('category.create')) {
@@ -214,7 +216,7 @@ class TaxonomyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateTaxonomyRequest $request, $id)
     {
         if (request()->ajax()) {
             try {

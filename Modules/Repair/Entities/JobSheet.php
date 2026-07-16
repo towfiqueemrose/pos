@@ -12,7 +12,7 @@ class JobSheet extends Model
      *
      * @var array
      */
-    protected $guarded = ['id'];
+    protected $guarded = ['id', 'created_at', 'updated_at', 'deleted_at', 'created_by'];
 
     /**
      * The attributes that should be cast to native types.

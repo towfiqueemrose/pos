@@ -2,9 +2,10 @@
 
 namespace Modules\Manufacturing\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Manufacturing\Http\Requests\StoreManufacturingRequest;
+use Modules\Manufacturing\Http\Requests\UpdateManufacturingRequest;
 
 class ManufacturingController extends Controller
 {
@@ -34,7 +35,7 @@ class ManufacturingController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreManufacturingRequest $request)
     {
     }
 
@@ -64,7 +65,7 @@ class ManufacturingController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function update(Request $request)
+    public function update(UpdateManufacturingRequest $request)
     {
     }
 

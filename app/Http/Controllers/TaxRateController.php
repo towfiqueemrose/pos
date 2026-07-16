@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\GroupSubTax;
+use App\Http\Requests\StoreTaxRateRequest;
+use App\Http\Requests\UpdateTaxRateRequest;
 use App\TaxRate;
 use App\Utils\TaxUtil;
-use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
 class TaxRateController extends Controller
@@ -86,7 +87,7 @@ class TaxRateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTaxRateRequest $request)
     {
         if (! auth()->user()->can('tax_rate.create')) {
             abort(403, 'Unauthorized action.');
@@ -154,7 +155,7 @@ class TaxRateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateTaxRateRequest $request, $id)
     {
         if (! auth()->user()->can('tax_rate.update')) {
             abort(403, 'Unauthorized action.');

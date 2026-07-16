@@ -22,6 +22,8 @@ use Modules\Essentials\Entities\EssentialsAllowanceAndDeduction;
 use Modules\Essentials\Entities\EssentialsLeave;
 use Modules\Essentials\Entities\EssentialsUserSalesTarget;
 use Modules\Essentials\Entities\PayrollGroup;
+use Modules\Essentials\Http\Requests\StorePayrollRequest;
+use Modules\Essentials\Http\Requests\UpdatePayrollRequest;
 use Modules\Essentials\Notifications\PayrollNotification;
 use Modules\Essentials\Utils\EssentialsUtil;
 use Yajra\DataTables\Facades\DataTables;
@@ -309,7 +311,7 @@ class PayrollController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StorePayrollRequest $request)
     {
         $business_id = request()->session()->get('user.business_id');
 
@@ -542,7 +544,7 @@ class PayrollController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdatePayrollRequest $request, $id)
     {
         $business_id = request()->session()->get('user.business_id');
 

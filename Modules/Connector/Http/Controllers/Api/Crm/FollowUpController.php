@@ -4,11 +4,12 @@ namespace Modules\Connector\Http\Controllers\Api\Crm;
 
 use App\Utils\ModuleUtil;
 use App\Utils\Util;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Modules\Connector\Http\Controllers\Api\ApiController;
+use Modules\Connector\Http\Requests\StoreConnectorFollowUpRequest;
+use Modules\Connector\Http\Requests\UpdateConnectorFollowUpRequest;
 use Modules\Connector\Transformers\CommonResource;
 use Modules\Crm\Utils\CrmUtil;
 
@@ -347,7 +348,7 @@ class FollowUpController extends ApiController
         }
     }
      */
-    public function store(Request $request)
+    public function store(StoreConnectorFollowUpRequest $request)
     {
         if (! $this->moduleUtil->isModuleInstalled('Crm')) {
             abort(403, 'Unauthorized action.');
@@ -425,11 +426,11 @@ class FollowUpController extends ApiController
                         "city": "Phoenix",
                         "state": "Arizona",
                         "country": "USA",
-                        "address_line_1": "Linking Street",
+                        "address_line_1": "123 Test Street",
                         "address_line_2": null,
                         "zip_code": null,
                         "dob": null,
-                        "mobile": "(378) 400-1234",
+                        "mobile": "(555) 000-0000",
                         "landline": null,
                         "alternate_number": null,
                         "pay_term_number": null,
@@ -584,7 +585,7 @@ class FollowUpController extends ApiController
     }
     }
      */
-    public function update(Request $request, $follow_up_id)
+    public function update(UpdateConnectorFollowUpRequest $request, $follow_up_id)
     {
         $user = Auth::user();
         if (! ($this->moduleUtil->isModuleInstalled('Crm') && ($user->can('crm.access_all_schedule') || $user->can('crm.access_own_schedule')))) {
@@ -638,7 +639,7 @@ class FollowUpController extends ApiController
                     "name": "mr Lead 3 kr kr 2",
                     "supplier_business_name": "POS",
                     "email": null,
-                    "mobile": "9437638555",
+                    "mobile": "5550000000",
                     "tax_number": null,
                     "created_at": "2020-12-15 23:14:30",
                     "custom_field1": null,
@@ -878,7 +879,7 @@ class FollowUpController extends ApiController
                     "name": " Lead kr  ",
                     "supplier_business_name": null,
                     "email": null,
-                    "mobile": "9437638555",
+                    "mobile": "5550000000",
                     "tax_number": null,
                     "created_at": "2021-01-07 18:31:08",
                     "custom_field1": null,

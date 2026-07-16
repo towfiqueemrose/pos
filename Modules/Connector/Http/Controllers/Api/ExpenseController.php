@@ -6,9 +6,10 @@ use App\ExpenseCategory;
 use App\Transaction;
 use App\Utils\TransactionUtil;
 use DB;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Modules\Connector\Http\Requests\StoreConnectorExpenseRequest;
+use Modules\Connector\Http\Requests\UpdateConnectorExpenseRequest;
 use Modules\Connector\Transformers\CommonResource;
 use Modules\Connector\Transformers\ExpenseResource;
 
@@ -345,7 +346,7 @@ class ExpenseController extends ApiController
         }
     }
      */
-    public function store(Request $request)
+    public function store(StoreConnectorExpenseRequest $request)
     {
         try {
             $user = Auth::user();
@@ -418,7 +419,7 @@ class ExpenseController extends ApiController
         }
     }
      */
-    public function update(Request $request, $id)
+    public function update(UpdateConnectorExpenseRequest $request, $id)
     {
         try {
             $user = Auth::user();

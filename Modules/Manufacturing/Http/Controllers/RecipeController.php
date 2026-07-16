@@ -9,6 +9,7 @@ use App\Variation;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Manufacturing\Http\Requests\StoreRecipeRequest;
 use Illuminate\Support\Facades\DB;
 use Modules\Manufacturing\Entities\MfgIngredientGroup;
 use Modules\Manufacturing\Entities\MfgRecipe;
@@ -152,7 +153,7 @@ class RecipeController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreRecipeRequest $request)
     {
         $business_id = request()->session()->get('user.business_id');
         if (! (auth()->user()->can('superadmin') || $this->moduleUtil->hasThePermissionInSubscription($business_id, 'manufacturing_module')) || ! auth()->user()->can('manufacturing.add_recipe')) {

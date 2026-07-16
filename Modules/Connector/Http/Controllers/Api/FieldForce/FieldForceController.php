@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Modules\Connector\Http\Controllers\Api\ApiController;
+use Modules\Connector\Http\Requests\StoreConnectorFieldForceRequest;
 use Modules\Connector\Transformers\CommonResource;
 use Modules\FieldForce\Entities\FieldForce;
 
@@ -163,11 +164,11 @@ class FieldForceController extends ApiController
                     "city": "Phoenix",
                     "state": "Arizona",
                     "country": "USA",
-                    "address_line_1": "Linking Street",
+                    "address_line_1": "123 Test Street",
                     "address_line_2": null,
                     "zip_code": null,
                     "dob": null,
-                    "mobile": "(378) 400-1234",
+                    "mobile": "(555) 000-0000",
                     "landline": null,
                     "alternate_number": null,
                     "pay_term_number": null,
@@ -368,7 +369,7 @@ class FieldForceController extends ApiController
             }
         }
      */
-    public function store(Request $request)
+    public function store(StoreConnectorFieldForceRequest $request)
     {
         if (! $this->moduleUtil->isModuleInstalled('FieldForce')) {
             abort(403, 'Unauthorized action.');
@@ -418,7 +419,7 @@ class FieldForceController extends ApiController
      * @bodyParam status string Current status of the visit (assigned, finished, met_contact, did_not_meet_contact) Example: finished
      * @bodyParam reason_to_not_meet_contact string Reason if status is did_not_meet_contact
      * @bodyParam visited_on format:Y-m-d H:i:s Example: 2021-12-28 17:23:00
-     * @bodyParam visited_address string Full address of the contact Example: Radhanath Mullick Ln, Tiretta Bazaar, Bow Bazaar, Kolkata, West Bengal, 700 073, India
+     * @bodyParam visited_address string Full address of the contact Example: 123 Test Street, Test City, Test State, 12345, USA
      * @bodyParam latitude decimal Lattitude of the user location if full address is not given Example: 41.40338
      * @bodyParam longitude decimal Longitude of the user location if full address is not given Example: 2.17403
      * @bodyParam comments string Extra comments

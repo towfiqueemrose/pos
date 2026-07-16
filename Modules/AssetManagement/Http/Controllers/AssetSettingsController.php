@@ -8,6 +8,8 @@ use App\User;
 use App\Utils\ModuleUtil;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\AssetManagement\Http\Requests\StoreAssetSettingsRequest;
+use Modules\AssetManagement\Http\Requests\UpdateAssetSettingsRequest;
 use Illuminate\Routing\Controller;
 use Modules\AssetManagement\Utils\AssetUtil;
 
@@ -102,7 +104,7 @@ class AssetSettingsController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreAssetSettingsRequest $request)
     {
         $is_admin = $this->moduleUtil->is_admin(auth()->user());
         $business_id = request()->session()->get('user.business_id');
@@ -192,7 +194,7 @@ class AssetSettingsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateAssetSettingsRequest $request, $id)
     {
         //
     }

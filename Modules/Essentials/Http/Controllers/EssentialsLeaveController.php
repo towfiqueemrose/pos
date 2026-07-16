@@ -10,6 +10,7 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Essentials\Entities\EssentialsLeave;
 use Modules\Essentials\Entities\EssentialsLeaveType;
+use Modules\Essentials\Http\Requests\StoreLeaveRequest;
 use Modules\Essentials\Notifications\LeaveStatusNotification;
 use Modules\Essentials\Notifications\NewLeaveNotification;
 use Spatie\Activitylog\Models\Activity;
@@ -190,7 +191,7 @@ class EssentialsLeaveController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreLeaveRequest $request)
     {
         $business_id = request()->session()->get('user.business_id');
 
@@ -284,7 +285,7 @@ class EssentialsLeaveController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function update(Request $request)
+    public function update(StoreLeaveRequest $request)
     {
     }
 

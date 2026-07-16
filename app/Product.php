@@ -11,7 +11,7 @@ class Product extends Model
      *
      * @var array
      */
-    protected $guarded = ['id'];
+    protected $guarded = ['id', 'created_at', 'updated_at', 'deleted_at'];
 
     protected $appends = ['image_url'];
 
@@ -201,7 +201,7 @@ class Product extends Model
         return $query->where(function ($q) use ($location_id) {
             $q->whereHas('product_locations', function ($query) use ($location_id) {
                 $query->where('product_locations.location_id', $location_id);
-            });
+            })->orWhereDoesntHave('product_locations');
         });
     }
 

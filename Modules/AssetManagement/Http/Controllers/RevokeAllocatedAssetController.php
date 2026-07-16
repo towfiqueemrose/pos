@@ -7,6 +7,8 @@ use App\Utils\Util;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\AssetManagement\Http\Requests\StoreRevokeAssetRequest;
+use Modules\AssetManagement\Http\Requests\UpdateRevokeAssetRequest;
 use Illuminate\Routing\Controller;
 use Modules\AssetManagement\Entities\AssetTransaction;
 use Modules\AssetManagement\Utils\AssetUtil;
@@ -139,7 +141,7 @@ class RevokeAllocatedAssetController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreRevokeAssetRequest $request)
     {
         $business_id = request()->session()->get('user.business_id');
 
@@ -220,7 +222,7 @@ class RevokeAllocatedAssetController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRevokeAssetRequest $request, $id)
     {
         //
     }

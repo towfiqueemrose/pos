@@ -23,6 +23,8 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Modules\Connector\Http\Requests\StoreConnectorSellRequest;
+use Modules\Connector\Http\Requests\UpdateConnectorSellRequest;
 use Modules\Connector\Transformers\SellResource;
 
 /**
@@ -888,7 +890,7 @@ class SellController extends ApiController
         ]
     }
      */
-    public function store(Request $request)
+    public function store(StoreConnectorSellRequest $request)
     {
         //TODO::Check customer credit limit
         try {
@@ -1246,7 +1248,7 @@ class SellController extends ApiController
         "payment_link": "http://local.pos.com/pay/6dfd77eb80f4976b456128e7f1311c9f"
     }
      */
-    public function update(Request $request, $id)
+    public function update(UpdateConnectorSellRequest $request, $id)
     {
         try {
             $user = Auth::user();

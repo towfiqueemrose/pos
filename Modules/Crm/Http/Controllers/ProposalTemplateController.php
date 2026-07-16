@@ -6,6 +6,7 @@ use App\Media;
 use App\Utils\ModuleUtil;
 use DB;
 use Illuminate\Http\Request;
+use Modules\Crm\Http\Requests\StoreProposalTemplateRequest;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Crm\Entities\CrmContact;
@@ -76,7 +77,7 @@ class ProposalTemplateController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreProposalTemplateRequest $request)
     {
         $business_id = request()->session()->get('user.business_id');
         if (! (auth()->user()->can('crm.add_proposal_template'))) {
@@ -90,11 +91,6 @@ class ProposalTemplateController extends Controller
                     'msg' => __('crm::lang.template_is_already_created'),
                 ]);
         }
-
-        $request->validate([
-            'subject' => 'required',
-            'body' => 'required',
-        ]);
 
         try {
             $input = $request->only(['subject', 'body']);

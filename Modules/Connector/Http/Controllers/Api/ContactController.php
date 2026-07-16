@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Modules\Connector\Http\Requests\StoreConnectorContactRequest;
+use Modules\Connector\Http\Requests\UpdateConnectorContactRequest;
 use Modules\Connector\Transformers\CommonResource;
 
 /**
@@ -55,23 +57,23 @@ class ContactController extends ApiController
                     "business_id": 1,
                     "type": "supplier",
                     "supplier_business_name": "Alpha Clothings",
-                    "name": "Michael",
+                    "name": "John",
                     "prefix": null,
-                    "first_name": "Michael",
+                    "first_name": "John",
                     "middle_name": null,
                     "last_name": null,
                     "email": null,
                     "contact_id": "CO0001",
                     "contact_status": "active",
-                    "tax_number": "4590091535",
+                    "tax_number": "0000000000",
                     "city": "Phoenix",
                     "state": "Arizona",
                     "country": "USA",
-                    "address_line_1": "Linking Street",
+                    "address_line_1": "123 Test Street",
                     "address_line_2": null,
                     "zip_code": null,
                     "dob": null,
-                    "mobile": "(378) 400-1234",
+                    "mobile": "(555) 000-0000",
                     "landline": null,
                     "alternate_number": null,
                     "pay_term_number": 15,
@@ -109,23 +111,23 @@ class ContactController extends ApiController
                     "business_id": 1,
                     "type": "supplier",
                     "supplier_business_name": "Manhattan Clothing Ltd.",
-                    "name": "Philip",
+                    "name": "Jane",
                     "prefix": null,
-                    "first_name": "Philip",
+                    "first_name": "Jane",
                     "middle_name": null,
                     "last_name": null,
                     "email": null,
                     "contact_id": "CO0003",
                     "contact_status": "active",
-                    "tax_number": "54869310093",
+                    "tax_number": "0000000000",
                     "city": "Phoenix",
                     "state": "Arizona",
                     "country": "USA",
-                    "address_line_1": "Linking Street",
+                    "address_line_1": "123 Test Street",
                     "address_line_2": null,
                     "zip_code": null,
                     "dob": null,
-                    "mobile": "(378) 400-1234",
+                    "mobile": "(555) 000-0000",
                     "landline": null,
                     "alternate_number": null,
                     "pay_term_number": 15,
@@ -163,23 +165,23 @@ class ContactController extends ApiController
                     "business_id": 1,
                     "type": "supplier",
                     "supplier_business_name": "Digital Ocean",
-                    "name": "Mike McCubbin",
+                    "name": "Alice Smith",
                     "prefix": null,
-                    "first_name": "Mike McCubbin",
+                    "first_name": "Alice Smith",
                     "middle_name": null,
                     "last_name": null,
                     "email": null,
                     "contact_id": "CN0004",
                     "contact_status": "active",
-                    "tax_number": "52965489001",
+                    "tax_number": "0000000000",
                     "city": "Phoenix",
                     "state": "Arizona",
                     "country": "USA",
-                    "address_line_1": "Linking Street",
+                    "address_line_1": "123 Test Street",
                     "address_line_2": null,
                     "zip_code": null,
                     "dob": null,
-                    "mobile": "(378) 400-1234",
+                    "mobile": "(555) 000-0000",
                     "landline": null,
                     "alternate_number": null,
                     "pay_term_number": 30,
@@ -217,23 +219,23 @@ class ContactController extends ApiController
                     "business_id": 1,
                     "type": "supplier",
                     "supplier_business_name": "Univer Suppliers",
-                    "name": "Jackson Hill",
+                    "name": "Charlie Brown",
                     "prefix": null,
-                    "first_name": "Jackson Hill",
+                    "first_name": "Charlie Brown",
                     "middle_name": null,
                     "last_name": null,
                     "email": null,
                     "contact_id": "CO0002",
                     "contact_status": "active",
-                    "tax_number": "5459000655",
+                    "tax_number": "0000000000",
                     "city": "Phoenix",
                     "state": "Arizona",
                     "country": "USA",
-                    "address_line_1": "Linking Street",
+                    "address_line_1": "123 Test Street",
                     "address_line_2": null,
                     "zip_code": null,
                     "dob": null,
-                    "mobile": "(378) 400-1234",
+                    "mobile": "(555) 000-0000",
                     "landline": null,
                     "alternate_number": null,
                     "pay_term_number": 45,
@@ -400,7 +402,7 @@ class ContactController extends ApiController
         }
     }
      */
-    public function store(Request $request)
+    public function store(StoreConnectorContactRequest $request)
     {
         try {
             $request->validate([
@@ -477,11 +479,11 @@ class ContactController extends ApiController
                 "city": "Phoenix",
                 "state": "Arizona",
                 "country": "USA",
-                "address_line_1": "Linking Street",
+                "address_line_1": "123 Test Street",
                 "address_line_2": null,
                 "zip_code": "85001",
                 "dob": null,
-                "mobile": "(378) 400-1234",
+                "mobile": "(555) 000-0000",
                 "landline": null,
                 "alternate_number": null,
                 "pay_term_number": null,
@@ -607,9 +609,9 @@ class ContactController extends ApiController
             "country": null,
             "address_line_1": "test address",
             "address_line_2": null,
-            "zip_code": "54878787",
+            "zip_code": "000000",
             "dob": "2000-06-13",
-            "mobile": "8754154872154",
+            "mobile": "5550000000",
             "landline": null,
             "alternate_number": null,
             "pay_term_number": null,
@@ -638,7 +640,7 @@ class ContactController extends ApiController
         }
     }
      */
-    public function update(Request $request, $id)
+    public function update(UpdateConnectorContactRequest $request, $id)
     {
         try {
             $input = $request->only(['type', 'supplier_business_name', 'prefix', 'first_name', 'middle_name', 'last_name', 'tax_number', 'pay_term_number', 'pay_term_type', 'mobile', 'address_line_1', 'address_line_2', 'zip_code', 'dob', 'alternate_number', 'city', 'state', 'country', 'landline', 'customer_group_id', 'contact_id', 'custom_field1', 'custom_field2', 'custom_field3', 'custom_field4', 'email', 'shipping_address', 'position']);

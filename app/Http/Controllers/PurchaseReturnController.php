@@ -8,7 +8,7 @@ use App\PurchaseLine;
 use App\Transaction;
 use App\Utils\ProductUtil;
 use App\Utils\TransactionUtil;
-use Illuminate\Http\Request;
+use App\Http\Requests\StorePurchaseReturnRequest;
 use Illuminate\Support\Facades\DB;
 use Spatie\Activitylog\Models\Activity;
 use Yajra\DataTables\Facades\DataTables;
@@ -227,7 +227,7 @@ class PurchaseReturnController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePurchaseReturnRequest $request)
     {
         if (! auth()->user()->can('purchase.update')) {
             abort(403, 'Unauthorized action.');

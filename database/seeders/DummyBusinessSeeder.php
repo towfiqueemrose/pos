@@ -24,7 +24,7 @@ class DummyBusinessSeeder extends Seeder
                 'last_name' => null,
                 'username' => 'admin',
                 'email' => 'admin@example.com',
-                'password' => '123456',
+                'password' => 'password',
                 'language' => 'en',
             ]);
 

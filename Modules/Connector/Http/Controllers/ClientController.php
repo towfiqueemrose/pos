@@ -3,12 +3,13 @@
 namespace Modules\Connector\Http\Controllers;
 
 use App\Utils\Util;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Str;
 use Laravel\Passport\Passport;
+use Modules\Connector\Http\Requests\StoreClientRequest;
+use Modules\Connector\Http\Requests\UpdateClientRequest;
 
 class ClientController extends Controller
 {
@@ -58,7 +59,7 @@ class ClientController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreClientRequest $request)
     {
         if (! auth()->user()->can('superadmin')) {
             abort(403, 'Unauthorized action.');
@@ -120,7 +121,7 @@ class ClientController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateClientRequest $request, $id)
     {
         //
     }

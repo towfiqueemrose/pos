@@ -6,6 +6,7 @@ use App\Media;
 use App\Utils\ModuleUtil;
 use DB;
 use Illuminate\Http\Request;
+use Modules\Crm\Http\Requests\StoreProposalRequest;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Crm\Entities\CrmContact;
@@ -102,18 +103,12 @@ class ProposalController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreProposalRequest $request)
     {
         $business_id = request()->session()->get('user.business_id');
         if (! (auth()->user()->can('superadmin') || $this->moduleUtil->hasThePermissionInSubscription($business_id, 'crm_module'))) {
             abort(403, 'Unauthorized action.');
         }
-
-        $request->validate([
-            'contact_id' => 'required',
-            'subject' => 'required',
-            'body' => 'required',
-        ]);
 
         try {
             $input = $request->only(['subject', 'body', 'contact_id', 'cc', 'bcc']);

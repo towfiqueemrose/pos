@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\BusinessLocation;
 use App\User;
+use App\Http\Requests\StoreManageUserRequest;
+use App\Http\Requests\UpdateManageUserRequest;
 use App\Utils\ModuleUtil;
 use DB;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Activitylog\Models\Activity;
@@ -122,7 +123,7 @@ class ManageUserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreManageUserRequest $request)
     {
         if (! auth()->user()->can('user.create')) {
             abort(403, 'Unauthorized action.');
@@ -233,7 +234,7 @@ class ManageUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateManageUserRequest $request, $id)
     {
         //Disable in demo
         $notAllowed = $this->moduleUtil->notAllowedInDemo();

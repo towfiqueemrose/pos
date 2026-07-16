@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreInvoiceSchemeRequest;
+use App\Http\Requests\UpdateInvoiceSchemeRequest;
 use App\InvoiceLayout;
 use App\InvoiceScheme;
 use Datatables;
-use Illuminate\Http\Request;
 
 class InvoiceSchemeController extends Controller
 {
@@ -98,7 +99,7 @@ class InvoiceSchemeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreInvoiceSchemeRequest $request)
     {
         if (! auth()->user()->can('invoice_settings.access')) {
             abort(403, 'Unauthorized action.');
@@ -176,7 +177,7 @@ class InvoiceSchemeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateInvoiceSchemeRequest $request, $id)
     {
         if (! auth()->user()->can('invoice_settings.access')) {
             abort(403, 'Unauthorized action.');

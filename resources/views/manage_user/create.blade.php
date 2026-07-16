@@ -66,7 +66,7 @@
       <div class="col-md-2 hide service_staff_pin_div">
         <div class="form-group">
           {!! Form::label('service_staff_pin', __( 'lang_v1.staff_pin' ) . ':') !!}
-            {!! Form::password('service_staff_pin', ['class' => 'form-control', 'required' => true, 'placeholder' => __( 'lang_v1.staff_pin' ) ]); !!}
+            {!! Form::password('service_staff_pin', ['class' => 'form-control', 'placeholder' => __( 'lang_v1.staff_pin' ) ]); !!}
         </div>
       </div>
   @endcomponent

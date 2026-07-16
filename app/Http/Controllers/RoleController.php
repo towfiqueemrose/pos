@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\SellingPriceGroup;
 use App\Utils\ModuleUtil;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreRoleRequest;
+use App\Http\Requests\UpdateRoleRequest;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Yajra\DataTables\Facades\DataTables;
@@ -109,7 +110,7 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRoleRequest $request)
     {
         if (! auth()->user()->can('roles.create')) {
             abort(403, 'Unauthorized action.');
@@ -225,7 +226,7 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRoleRequest $request, $id)
     {
         if (! auth()->user()->can('roles.update')) {
             abort(403, 'Unauthorized action.');

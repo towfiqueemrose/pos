@@ -21,6 +21,8 @@ use Illuminate\Routing\Controller;
 use Modules\Repair\Entities\DeviceModel;
 use Modules\Repair\Entities\JobSheet;
 use Modules\Repair\Entities\RepairStatus;
+use Modules\Repair\Http\Requests\StoreJobSheetRequest;
+use Modules\Repair\Http\Requests\UpdateJobSheetRequest;
 use Modules\Repair\Utils\RepairUtil;
 use Spatie\Activitylog\Models\Activity;
 use Yajra\DataTables\Facades\DataTables;
@@ -347,7 +349,7 @@ class JobSheetController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreJobSheetRequest $request)
     {
         $business_id = request()->session()->get('user.business_id');
 
@@ -536,7 +538,7 @@ class JobSheetController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateJobSheetRequest $request, $id)
     {
         $business_id = request()->session()->get('user.business_id');
 

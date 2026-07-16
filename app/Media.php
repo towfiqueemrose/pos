@@ -12,7 +12,7 @@ class Media extends Model
      *
      * @var array
      */
-    protected $guarded = ['id'];
+    protected $guarded = ['id', 'created_at', 'updated_at', 'deleted_at'];
 
     protected $appends = ['display_name', 'display_url'];
 

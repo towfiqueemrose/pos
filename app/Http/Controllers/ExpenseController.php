@@ -10,11 +10,12 @@ use App\ExpenseCategory;
 use App\TaxRate;
 use App\Transaction;
 use App\User;
+use App\Http\Requests\StoreExpenseRequest;
+use App\Http\Requests\UpdateExpenseRequest;
 use App\Utils\CashRegisterUtil;
 use App\Utils\ModuleUtil;
 use App\Utils\TransactionUtil;
 use DB;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Yajra\DataTables\Facades\DataTables;
 use App\Events\ExpenseCreatedOrModified;
@@ -335,7 +336,7 @@ class ExpenseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreExpenseRequest $request)
     {
         if (! auth()->user()->can('expense.add')) {
             abort(403, 'Unauthorized action.');
@@ -457,7 +458,7 @@ class ExpenseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateExpenseRequest $request, $id)
     {
         if (! auth()->user()->can('expense.edit')) {
             abort(403, 'Unauthorized action.');

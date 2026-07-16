@@ -6,6 +6,8 @@ use App\Contact;
 use App\Events\TransactionPaymentAdded;
 use App\Events\TransactionPaymentUpdated;
 use App\Exceptions\AdvanceBalanceNotAvailable;
+use App\Http\Requests\StoreTransactionPaymentRequest;
+use App\Http\Requests\UpdateTransactionPaymentRequest;
 use App\Transaction;
 use App\TransactionPayment;
 use App\Utils\ModuleUtil;
@@ -58,7 +60,7 @@ class TransactionPaymentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTransactionPaymentRequest $request)
     {
         try {
             $business_id = $request->session()->get('user.business_id');
@@ -229,7 +231,7 @@ class TransactionPaymentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateTransactionPaymentRequest $request, $id)
     {
         if (! auth()->user()->can('edit_purchase_payment') && ! auth()->user()->can('edit_sell_payment') && ! auth()->user()->can('all_expense.access') && ! auth()->user()->can('view_own_expense') && !auth()->user()->can('hms.edit_booking_payment')) {
             abort(403, 'Unauthorized action.');

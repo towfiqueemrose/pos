@@ -329,7 +329,7 @@ class CommonResourceController extends ApiController
                     "business_id": 1,
                     "location_id": null,
                     "name": "Awesome Shop",
-                    "landmark": "Linking Street",
+                    "landmark": "123 Test Street",
                     "country": "USA",
                     "state": "Arizona",
                     "city": "Phoenix",
@@ -611,7 +611,7 @@ class CommonResourceController extends ApiController
      * @bodyParam lat decimal required Lattitude of the location Example: 41.40338
      * @bodyParam lon decimal required Longitude of the location Example: 2.17403
      * @response {
-        "address": "Radhanath Mullick Ln, Tiretta Bazaar, Bow Bazaar, Kolkata, West Bengal, 700 073, India"
+        "address": "123 Test Street, Test City, Test State, 12345, USA"
     }
      */
     public function getLocation()

@@ -11,7 +11,7 @@ class Warranty extends Model
      *
      * @var array
      */
-    protected $guarded = ['id'];
+    protected $guarded = ['id', 'created_at', 'updated_at', 'deleted_at', 'created_by'];
 
     public static function forDropdown($business_id)
     {
