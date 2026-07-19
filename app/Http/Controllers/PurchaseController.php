@@ -59,7 +59,7 @@ class PurchaseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+public function index()
     {
         if (! auth()->user()->can('purchase.view') && ! auth()->user()->can('purchase.create') && ! auth()->user()->can('view_own_purchase')) {
             abort(403, 'Unauthorized action.');
@@ -82,7 +82,7 @@ class PurchaseController extends Controller
             if (! empty(request()->input('payment_status')) && request()->input('payment_status') != 'overdue') {
                 $purchases->where('transactions.payment_status', request()->input('payment_status'));
             } elseif (request()->input('payment_status') == 'overdue') {
-                $purchases->whereIn('transactions.payment_status', ['due', 'partial'])
+        $purchases->whereIn('transactions.payment_status', ['due', 'partial'])
                     ->whereNotNull('transactions.pay_term_number')
                     ->whereNotNull('transactions.pay_term_type')
                     ->whereRaw("IF(transactions.pay_term_type='days', DATE_ADD(transactions.transaction_date, INTERVAL transactions.pay_term_number DAY) < CURDATE(), DATE_ADD(transactions.transaction_date, INTERVAL transactions.pay_term_number MONTH) < CURDATE())");
@@ -367,25 +367,17 @@ class PurchaseController extends Controller
             $transaction_data['shipping_custom_field_4'] = $request->input('shipping_custom_field_4', null);
             $transaction_data['shipping_custom_field_5'] = $request->input('shipping_custom_field_5', null);
 
-            if ($request->input('additional_expense_value_1') != '') {
-                $transaction_data['additional_expense_key_1'] = $request->input('additional_expense_key_1');
-                $transaction_data['additional_expense_value_1'] = $this->productUtil->num_uf($request->input('additional_expense_value_1'), $currency_details) * $exchange_rate;
-            }
+            $transaction_data['additional_expense_key_1'] = $request->input('additional_expense_key_1');
+            $transaction_data['additional_expense_value_1'] = $request->input('additional_expense_value_1') !== '' ? $this->productUtil->num_uf($request->input('additional_expense_value_1'), $currency_details) * $exchange_rate : 0;
 
-            if ($request->input('additional_expense_value_2') != '') {
-                $transaction_data['additional_expense_key_2'] = $request->input('additional_expense_key_2');
-                $transaction_data['additional_expense_value_2'] = $this->productUtil->num_uf($request->input('additional_expense_value_2'), $currency_details) * $exchange_rate;
-            }
+            $transaction_data['additional_expense_key_2'] = $request->input('additional_expense_key_2');
+            $transaction_data['additional_expense_value_2'] = $request->input('additional_expense_value_2') !== '' ? $this->productUtil->num_uf($request->input('additional_expense_value_2'), $currency_details) * $exchange_rate : 0;
 
-            if ($request->input('additional_expense_value_3') != '') {
-                $transaction_data['additional_expense_key_3'] = $request->input('additional_expense_key_3');
-                $transaction_data['additional_expense_value_3'] = $this->productUtil->num_uf($request->input('additional_expense_value_3'), $currency_details) * $exchange_rate;
-            }
+            $transaction_data['additional_expense_key_3'] = $request->input('additional_expense_key_3');
+            $transaction_data['additional_expense_value_3'] = $request->input('additional_expense_value_3') !== '' ? $this->productUtil->num_uf($request->input('additional_expense_value_3'), $currency_details) * $exchange_rate : 0;
 
-            if ($request->input('additional_expense_value_4') != '') {
-                $transaction_data['additional_expense_key_4'] = $request->input('additional_expense_key_4');
-                $transaction_data['additional_expense_value_4'] = $this->productUtil->num_uf($request->input('additional_expense_value_4'), $currency_details) * $exchange_rate;
-            }
+            $transaction_data['additional_expense_key_4'] = $request->input('additional_expense_key_4');
+            $transaction_data['additional_expense_value_4'] = $request->input('additional_expense_value_4') !== '' ? $this->productUtil->num_uf($request->input('additional_expense_value_4'), $currency_details) * $exchange_rate : 0;
 
             DB::beginTransaction();
 
@@ -655,7 +647,6 @@ class PurchaseController extends Controller
                 'document' => 'file|max:'.(config('constants.document_size_limit') / 1000),
             ]);
 
-            $transaction = Transaction::findOrFail($id);
             $before_status = $transaction->status;
             $business_id = request()->session()->get('user.business_id');
             $enable_product_editing = $request->session()->get('business.enable_editing_product_from_purchase');
@@ -824,9 +815,10 @@ class PurchaseController extends Controller
 
                 $transaction_status = $transaction->status;
                 if ($transaction_status != 'received') {
+                    //Delete Transaction
                     $transaction->delete();
                 } else {
-                    //Delete purchase lines first
+                    //Delete purchase lines first and decrease stock
                     $delete_purchase_line_ids = [];
                     foreach ($delete_purchase_lines as $purchase_line) {
                         $delete_purchase_line_ids[] = $purchase_line->id;
@@ -843,10 +835,10 @@ class PurchaseController extends Controller
 
                     //Update mapping of purchase & Sell.
                     $this->transactionUtil->adjustMappingPurchaseSellAfterEditingPurchase($transaction_status, $transaction, $delete_purchase_lines);
-                }
 
-                //Delete Transaction
-                $transaction->delete();
+                    //Delete Transaction
+                    $transaction->delete();
+                }
 
                 //Delete account transactions
                 AccountTransaction::where('transaction_id', $id)->delete();

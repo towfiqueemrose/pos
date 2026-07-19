@@ -933,11 +933,10 @@ function update_table_total() {
     __write_number($('input#st_before_tax_input'), total_st_before_tax, true);
 
     $('#total_subtotal').text(__currency_trans_from_en(total_subtotal, true, true));
-    __write_number($('input#total_subtotal_input'), total_subtotal, true);
+    $('input#total_subtotal_input').val(total_subtotal);
 }
 
 function update_grand_total() {
-    var st_before_tax = __read_number($('input#st_before_tax_input'), true);
     var total_subtotal = __read_number($('input#total_subtotal_input'), true);
 
     //Calculate Discount
@@ -965,7 +964,7 @@ function update_grand_total() {
     grand_total = total_subtotal - discount + tax + shipping_charges + 
     additional_expense_1 + additional_expense_2 + additional_expense_3 + additional_expense_4;
 
-    __write_number($('input#grand_total_hidden'), grand_total, true);
+    $('input#grand_total_hidden').val(grand_total);
 
     var payment = __read_number($('input.payment-amount'), true);
 

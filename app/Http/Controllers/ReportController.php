@@ -640,7 +640,10 @@ class ReportController extends Controller
      */
     public function getStockDetails(Request $request)
     {
-        //Return the details in ajax call
+        if (! auth()->user()->can('stock_report.view')) {
+            abort(403, 'Unauthorized action.');
+        }
+
         if ($request->ajax()) {
             $business_id = $request->session()->get('user.business_id');
             $product_id = $request->input('product_id');
@@ -700,6 +703,12 @@ class ReportController extends Controller
             return view('report.stock_details')
                         ->with(compact('product_details'));
         }
+
+        $business_id = $request->session()->get('user.business_id');
+        $business_locations = BusinessLocation::forDropdown($business_id, true);
+
+        return view('report.stock_details_page')
+            ->with(compact('business_locations'));
     }
 
     /**

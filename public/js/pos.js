@@ -1876,7 +1876,7 @@ function calculate_billing_details(price_total) {
     }
     $('input#round_off_amount').val(round_off_amount);
 
-    __write_number($('input#final_total_input'), total_payable_rounded);
+    $('input#final_total_input').val(total_payable_rounded);
     var curr_exchange_rate = 1;
     if ($('#exchange_rate').length > 0 && $('#exchange_rate').val()) {
         curr_exchange_rate = __read_number($('#exchange_rate'));

@@ -302,9 +302,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   transition: transform 1s ease 0s;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
-.info-box-new-style:hover {
-    transform: perspective(3000px) rotateY(15deg);
-  }
+
   .info-box-new-style .info-box-icon {
     display: flex;
     align-items: center;
